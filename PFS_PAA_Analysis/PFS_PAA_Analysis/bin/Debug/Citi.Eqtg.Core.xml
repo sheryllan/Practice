@@ -1,0 +1,2812 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Citi.Eqtg.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Citi.Eqtg.Core.App">
+            <summary>
+            Controls startup and runtime behaviour for the application, and provides access to common services.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.App.Init(System.String[],System.Reflection.Assembly)">
+            <summary>
+            Initialises the application.
+            </summary>
+            <param name="args">Command line passed to <see cref="P:Citi.Eqtg.Core.App.Host"/>.</param>
+            <param name="mainAssembly"><see cref="T:System.Reflection.Assembly"/> used to locate the <see cref="T:Citi.Eqtg.Core.AppHostAttribute"/>,
+            and used as the application's main assembly.</param>
+            <exception cref="T:System.InvalidOperationException">If no <see cref="T:Citi.Eqtg.Core.AppHostAttribute"/> is defined on
+            <paramref name="mainAssembly"/>.</exception>
+            <remarks>
+            <para>This method does the following:</para>
+            <list type="number">
+            	<item>
+            		<description>Looks for a <see cref="T:Citi.Eqtg.Core.AppHostAttribute"/> on <paramref name="mainAssembly"/>.</description>
+            	</item>
+            	<item>
+            		<description>Creates an <see cref="T:Citi.Eqtg.Core.AppHost"/> of the type specified by the <see cref="T:Citi.Eqtg.Core.AppHostAttribute"/>.</description>
+            	</item>
+            	<item>
+            		<description>Calls <see cref="M:Citi.Eqtg.Core.App.Init(System.String[],System.Reflection.Assembly,Citi.Eqtg.Core.AppHost)"/>.</description>
+            	</item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.App.Init(System.String[],System.Reflection.Assembly,Citi.Eqtg.Core.AppHost)">
+            <summary>
+            Initialises the application.
+            </summary>
+            <param name="args">Command line passed to <see cref="P:Citi.Eqtg.Core.App.Host"/>.</param>
+            <param name="mainAssembly"><see cref="T:System.Reflection.Assembly"/> used to locate the <see cref="T:Citi.Eqtg.Core.AppHostAttribute"/>,
+            and used as the application's main assembly.</param>
+            <param name="host">The <see cref="T:Citi.Eqtg.Core.AppHost"/> used to populate the <see cref="P:Citi.Eqtg.Core.App.Host"/> property.</param>
+            <remarks>
+            <para>Call this method before calling <see cref="M:Citi.Eqtg.Core.App.Run"/>.</para>
+            <para>This method does the following:</para>
+            <list type="number">
+            	<item>
+            		<description>If the <see cref="T:Citi.Eqtg.Core.AppHost"/> implements <see cref="T:System.ComponentModel.ISupportInitialize"/>, calls <see cref="M:System.ComponentModel.ISupportInitialize.BeginInit"/>.</description>
+            	</item>
+            	<item>
+            		<description>Sets <see cref="P:Citi.Eqtg.Core.AppHost.CommandLineArgs"/> and <see cref="P:Citi.Eqtg.Core.AppHost.MainAssembly"/>.</description>
+            	</item>
+            	<item>
+            		<description>If the <see cref="T:Citi.Eqtg.Core.AppHost"/> implements <see cref="T:System.ComponentModel.ISupportInitialize"/>, calls <see cref="M:System.ComponentModel.ISupportInitialize.EndInit"/>.</description>
+            	</item>
+            	<item>
+            		<description>Sets <see cref="P:Citi.Eqtg.Core.App.Host"/>.</description>
+            	</item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.App.Run">
+            <summary>
+            Start the application. Returns when the application exits.
+            </summary>
+            <remarks>
+            Call <see cref="M:Citi.Eqtg.Core.App.Init(System.String[],System.Reflection.Assembly)"/> before calling this method.
+            </remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.App.Stop">
+            <summary>
+            Requests that the application exits.
+            </summary>
+            <remarks>Calls <see cref="M:Citi.Eqtg.Core.AppHost.Stop"/>.</remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.App.ReportException(System.String,System.Exception)">
+            <summary>
+            Informs the user of an exception that occurred.
+            </summary>
+            <remarks>Calls <see cref="M:Citi.Eqtg.Core.AppHost.ReportException(System.String,System.Exception)"/>.</remarks>
+            <param name="ex">The <see cref="T:System.Exception"/> to report.</param>
+            <param name="message">The message to show to the user.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.App.StartConsoleLogger">
+            <summary>
+            Sets up log4net to log all messages to the console.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.App.CreateDBConnection">
+            <summary>
+            Creates an <see cref="T:System.Data.IDbConnection"/> using the default connection string.
+            </summary>
+            <remarks>Calls <see cref="M:Citi.Eqtg.Core.AppHost.CreateDBConnection"/>.</remarks>
+            <returns>An open <see cref="T:System.Data.IDbConnection"/>.</returns>
+        </member>
+        <member name="P:Citi.Eqtg.Core.App.DBConnectionInfo">
+            <summary>
+            Get application DB connection info
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.App.Host">
+            <summary>
+            Gets the application's <see cref="T:Citi.Eqtg.Core.AppHost"/>.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.App.MainAssembly">
+            <summary>
+            Gets or sets the application's main <see cref="T:System.Reflection.Assembly"/>.
+            </summary>
+            <remarks>Forwards to <see cref="P:Citi.Eqtg.Core.AppHost.MainAssembly"/>.</remarks>
+            <value>
+            Defaults to the value passed to <see cref="M:Citi.Eqtg.Core.App.Init(System.String[],System.Reflection.Assembly)"/>.
+            </value>
+        </member>
+        <member name="P:Citi.Eqtg.Core.App.Name">
+            <summary>
+            Gets or sets the application's name.
+            </summary>
+            <remarks>Forwards to <see cref="P:Citi.Eqtg.Core.AppHost.Name"/>.</remarks>
+            <value>This is the application name as displayed to the user. Defaults to the value 
+            of the <see cref="T:System.Reflection.AssemblyTitleAttribute"/> on the <see cref="P:Citi.Eqtg.Core.App.MainAssembly"/>.</value>
+        </member>
+        <member name="P:Citi.Eqtg.Core.App.ShortName">
+            <summary>
+            Gets or sets the short version of the application's name.
+            </summary>
+            <remarks>Forwards to <see cref="P:Citi.Eqtg.Core.AppHost.ShortName"/>.</remarks>
+            <value>This is the application name as used in log file names, the Registry, the service 
+            name, and elsewhere. Defaults to the name of the <see cref="P:Citi.Eqtg.Core.App.MainAssembly"/>.</value>
+        </member>
+        <member name="P:Citi.Eqtg.Core.App.AppNamespace">
+            <summary>
+            Gets the namespace where this instance of the application is running.
+            </summary>
+            <remarks>Forwards to <see cref="P:Citi.Eqtg.Core.AppHost.AppNamespace"/>.</remarks>
+            <value>Identifies an installation of the application on a particular machine, and is used 
+            in log file names, the Registry, the service name, and elsewhere. Defaults to 
+            DEFAULT_NS.</value>
+        </member>
+        <member name="P:Citi.Eqtg.Core.App.CommandLine">
+            <summary>
+            Gets or sets the command parameters available to the application.
+            </summary>
+            <remarks>Forwards to <see cref="P:Citi.Eqtg.Core.AppHost.CommandLine"/>.</remarks>
+            <value>
+            <para>Command parameters are taken from the following sources:</para>
+            <list type="table">
+            	<listheader>
+            		<term><see cref="T:Citi.Eqtg.Core.AppHost"/> type</term>
+            		<description><see cref="P:Citi.Eqtg.Core.App.CommandLine"/> contains</description>
+            	</listheader>
+            	<item>
+            		<term><see cref="T:Citi.Eqtg.Core.ConsoleAppHost"/></term>
+            		<description>Command-line parameters</description>
+            	</item>
+            	<item>
+            		<term><see cref="T:Citi.Eqtg.Core.DaemonAppHost"/></term>
+            		<description>Contents of the HKLM\Software\Salomon\EQ Services\<see cref="P:Citi.Eqtg.Core.App.ShortName"/>_<see cref="P:Citi.Eqtg.Core.App.AppNamespace"/>\cmdline key;
+            		command-line parameters specified in the Windows Services applet</description>
+            	</item>
+            </list>
+            </value>
+        </member>
+        <member name="T:Citi.Eqtg.Core.AppArgAttribute">
+            <summary>
+            Marks a field or property that will be loaded by <see cref="M:Citi.Eqtg.Core.CommandLine.Bind(System.Object)"/>.
+            </summary>
+            <remarks>
+            Any fields and properties defined on the application's instance of <see cref="T:Citi.Eqtg.Core.AppHost"/>
+            that are marked with <see cref="T:Citi.Eqtg.Core.AppArgAttribute"/> will be automatically populated when 
+            the application starts.
+            </remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.AppArgAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.AppArgAttribute"/> class.
+            </summary>
+            <param name="name">The name of the command line parameter.</param>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppArgAttribute.Name">
+            <summary>
+            Gets the name of the command line parameter.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppArgAttribute.Required">
+            <summary>
+            Gets or sets a flag indicating whether the parameter must always be specified on the command line.
+            </summary>
+            <value>
+            Defaults to <see langword="false"/>.
+            </value>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppArgAttribute.Helpline">
+            <summary>
+            Gets or sets a string which contains a line of help information
+            </summary>
+            <value>
+            Defaults to default string
+            </value>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppArgAttribute.SensibleDefault">
+            <summary>
+            Gets or sets the "sensible" default for the argument
+            </summary>
+            <value>
+            Defaults to default string
+            </value>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppArgAttribute.Hint">
+            <summary>
+            Gets or sets the hint for the arg
+            </summary>
+            <value>
+            Defaults to default string
+            </value>
+        </member>
+        <member name="T:Citi.Eqtg.Core.AppHost">
+            <summary>
+            Provides the implementation of the methods on <see cref="T:Citi.Eqtg.Core.App"/>.
+            </summary>
+            <remarks>
+            <para>You should specify the name of a class derived from <see cref="T:Citi.Eqtg.Core.AppHost"/> by applying an
+            <see cref="T:Citi.Eqtg.Core.AppHostAttribute"/> to your application's main assembly, then passing that assembly to
+            <see cref="M:Citi.Eqtg.Core.App.Init(System.String[],System.Reflection.Assembly)"/>.</para>
+            <para>Any fields and properties defined on the application's instance of <see cref="T:Citi.Eqtg.Core.AppHost"/>
+            that are marked with <see cref="T:Citi.Eqtg.Core.AppArgAttribute"/> will be automatically populated inside
+            <see cref="M:Citi.Eqtg.Core.AppHost.OnStartup(System.ComponentModel.CancelEventArgs)"/>.</para>
+            </remarks>
+        </member>
+        <member name="T:Citi.Eqtg.Core.IDBProvider">
+            <summary>
+            Provides a method to create an <see cref="T:System.Data.IDbConnection"/>.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.IDBProvider.CreateDBConnection">
+            <summary>
+            Creates an open <see cref="T:System.Data.IDbConnection"/>.
+            </summary>
+            <returns>An open <see cref="T:System.Data.IDbConnection"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.AppHost.RunMainLoop">
+            <summary>
+            Called by <see cref="M:Citi.Eqtg.Core.App.Run"/> to run the application.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.AppHost.Stop">
+            <summary>
+            Called by <see cref="M:Citi.Eqtg.Core.App.Stop"/> to request that the application exit.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.AppHost.ReportException(System.String,System.Exception)">
+            <summary>
+            Informs the user of an exception that occurred.
+            </summary>
+            <param name="message">The message to show to the user.</param>
+            <param name="ex">The <see cref="T:System.Exception"/> to report.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.AppHost.CreateDBConnection">
+            <summary>
+            Creates an <see cref="T:System.Data.IDbConnection"/> using the default connection string.
+            </summary>
+            <remarks>Calls <see cref="M:Citi.Eqtg.Core.AppHost.CreateDBConnection"/>.</remarks>
+            <returns>An open <see cref="T:System.Data.IDbConnection"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.AppHost.ReadCommandLine">
+            <summary>
+            Called by <see cref="P:Citi.Eqtg.Core.AppHost.CommandLine"/> to assemble the application's command parameter 
+            list the first time it is needed.
+            </summary>
+            <returns>A <see cref="P:Citi.Eqtg.Core.AppHost.CommandLine"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.AppHost.OnStartup(System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Raises the <see cref="E:Citi.Eqtg.Core.AppHost.Startup"/> event.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.AppHost.OnShutdown(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:Citi.Eqtg.Core.AppHost.Shutdown"/> event.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppHost.DBConnectionInfo">
+            <summary>
+            Return the database connection infomation.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppHost.MainAssembly">
+            <summary>
+            Called by <see cref="P:Citi.Eqtg.Core.App.MainAssembly"/> to get or set the application's main <see cref="T:System.Reflection.Assembly"/>.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppHost.Name">
+            <summary>
+            Called by <see cref="P:Citi.Eqtg.Core.App.MainAssembly"/> to get or set the application's name.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppHost.ShortName">
+            <summary>
+            Called by <see cref="P:Citi.Eqtg.Core.App.ShortName"/> to get or set the short version of the 
+            application's name.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppHost.AppNamespace">
+            <summary>
+            Called by <see cref="P:Citi.Eqtg.Core.App.AppNamespace"/> to get the namespace where this instance of 
+            the application is running.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppHost.CommandLineArgs">
+            <summary>
+            Gets or sets the command line arguments passed to <see cref="M:Citi.Eqtg.Core.App.Init(System.String[],System.Reflection.Assembly)"/>.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppHost.CommandLine">
+            <summary>
+            Called by <see cref="P:Citi.Eqtg.Core.App.CommandLine"/> to get or set the command parameters 
+            available to the application.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppHost.Log">
+            <summary>
+            Gets or sets a reference to the <see cref="T:log4net.ILog"/> used by the <see cref="T:Citi.Eqtg.Core.AppHost"/>.
+            </summary>
+        </member>
+        <member name="E:Citi.Eqtg.Core.AppHost.Startup">
+            <summary>
+            Occurs after application startup.
+            </summary>
+        </member>
+        <member name="E:Citi.Eqtg.Core.AppHost.Shutdown">
+            <summary>
+            Occurs before application shutdown.
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.AppHostAttribute">
+            <summary>
+            When applied to the application's main assembly, specifies the type of <see cref="T:Citi.Eqtg.Core.AppHost"/> used.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.AppHostAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.AppHostAttribute"/> class.
+            </summary>
+            <param name="hostType">The type of <see cref="T:Citi.Eqtg.Core.AppHost"/> for this application to use.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.AppHostAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.AppHostAttribute"/> class.
+            </summary>
+            <param name="hostTypeName">The name of the type of <see cref="T:Citi.Eqtg.Core.AppHost"/> for this application to use.</param>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppHostAttribute.HostType">
+            <summary>
+            Gets the type of <see cref="T:Citi.Eqtg.Core.AppHost"/> used by this application.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.AppHostAttribute.HostTypeName">
+            <summary>
+            Gets the name of the type of <see cref="T:Citi.Eqtg.Core.AppHost"/> used by this application.
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.BackingStoreQueue`1">
+            <summary>
+            Implements a FIFO queue that writes out items to disk, rather than
+            hold them all in memory
+            </summary>
+            <remarks>See TestBackingStoreQueue in UnitTests project for example usage</remarks>
+            <typeparam name="T">Type of items to queue</typeparam>
+        </member>
+        <member name="T:Citi.Eqtg.Core.IQueue`1">
+            <summary>
+            Interface to a FIFO queue
+            </summary>
+            <typeparam name="T">Type of queue items</typeparam>
+        </member>
+        <member name="M:Citi.Eqtg.Core.IQueue`1.Enqueue(`0)">
+            <summary>
+            Pushes an item to the tail of the queue
+            </summary>
+            <param name="item">Item to push</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.IQueue`1.Dequeue">
+            <summary>
+            Removes the item at the head of the queue
+            </summary>
+            <returns>Item that was at the head</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.IQueue`1.Peek">
+            <summary>
+            Returns the item at the head of the queue without removing it
+            </summary>
+            <returns>Head item</returns>
+        </member>
+        <member name="P:Citi.Eqtg.Core.IQueue`1.Count">
+            <summary>
+            Count of items in the queue
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.BackingStoreQueue`1.#ctor(System.Int32,Citi.Eqtg.Core.BackingStoreQueue{`0}.IQueueItemSerialiser)">
+            <summary>
+            Creates an empty queue with a file backing store in the temporary directory
+            </summary>
+            <param name="maxItemsInMemory">This many items can be held in memory before the backing store is used</param>
+            <param name="serialiser">Used to read/write queue items to the backing store</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.BackingStoreQueue`1.#ctor(System.Int32,Citi.Eqtg.Core.BackingStoreQueue{`0}.IQueueItemSerialiser,System.IO.Stream)">
+            <summary>
+            Creates an empty queue with a specified backing store
+            </summary>
+            <param name="maxItemsInMemory">This many items can be held in memory before the backing store is used</param>
+            <param name="serialiser">Used to read/write queue items to the backing store</param>
+            <param name="backingStore">The backing store to use - ownership is assumed. The stream must support
+            reading, writing and seeking and should not be shared with other objects.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.BackingStoreQueue`1.Finalize">
+            <summary>
+            Closes backing store
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.BackingStoreQueue`1.Dispose">
+            <summary>
+            Disposes of underlying backing store
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.BackingStoreQueue`1.ourLog">
+            <summary>
+            Logger
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.BackingStoreQueue`1.IQueueItemSerialiser">
+            <summary>
+            Objects used to serialise/deserialise objects to/from the backing store
+            implement this interface
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.BackingStoreQueue`1.IQueueItemSerialiser.ToStream(`0,System.IO.Stream)">
+            <summary>
+            Writes an item to a stream
+            </summary>
+            <param name="item">Item to serialise</param>
+            <param name="outStream">Target to serialise to</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.BackingStoreQueue`1.IQueueItemSerialiser.FromStream(System.IO.Stream)">
+            <summary>
+            Reads an item from a stream
+            </summary>
+            <param name="inStream">Stream containing serialised item</param>
+            <returns>Deserialised object</returns>
+        </member>
+        <member name="T:Citi.Eqtg.Core.BoundedQueue`1">
+            <summary>
+            Semaphore-based, thread-safe queue which is only allowed to contain a certain number of items
+            </summary>
+            <remarks>
+            Although a producer using this queue will block if the maximum size has already been reached,
+            a consumer will NOT block if attempting to pop an empty queue.
+            </remarks>
+            <typeparam name="T">The type of object in the queue</typeparam>
+        </member>
+        <member name="M:Citi.Eqtg.Core.BoundedQueue`1.Enqueue(`0)">
+            <summary>
+            Push an item onto the queue - blocks if the queue is already full
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.BoundedQueue`1.Dequeue">
+            <summary>
+            Pop an item off the queue
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.BoundedQueue`1.Peek">
+            <summary>
+            Return item at front of queue without removing it
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Citi.Eqtg.Core.CloneableDictionary`2">
+            <summary>
+            Version of Dictionary which can make deep copies of itself
+            Unless shallow copy is specified.
+            Shallow copy should be ONLY used by ContextServer.SerialiseContextFromShallowSnapshot to reduce memory usage
+            For valuation (pricing, stressing etc) you want to make deep copy
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.CloneableList`1">
+            <summary>
+            Version of List which can make deep copies of itself
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CloneableList`1.#ctor">
+            <summary>
+            Creates an empty clonable list
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CloneableList`1.#ctor(System.Int32)">
+            <summary>
+            Create an empty list with an initial capacity
+            </summary>
+            <param name="capacity">Empty list with at least enough room for this many objects</param>
+        </member>
+        <member name="T:Citi.Eqtg.Core.CommandLine">
+            <summary>
+            Represents a program's command line parameters.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.CommandLine"/> class.
+            </summary>
+            <example><code>
+            static private void Main(string[] args)
+            {
+            	CommandLine commandLine = new CommandLine(args);
+            }
+            </code></example>
+            <param name="strings">The command line parameters. This array should not include
+            the program name.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.#ctor(Microsoft.Win32.RegistryKey)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.CommandLine"/> class.
+            </summary>
+            <example><code>
+            static private void Main()
+            {
+            	CommandLine commandLine = new CommandLine(Registry.CurrentUser.OpenSubKey("Software\\TestApp");
+            }
+            </code></example>
+            <param name="key">A <see cref="T:Microsoft.Win32.RegistryKey"/> that contains command line parameters
+            as individual values.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.#ctor(System.String[],System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.CommandLine"/> class.
+            </summary>
+            <param name="names">An array of <see cref="T:System.String"/> that contains the parameter names, with the 
+            leading '-' removed.</param>
+            <param name="values">An array of <see cref="T:System.String"/>, in the same order as the 
+            <paramref name="names"/>, that contains the parameter values.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.FromAppSettings">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.CommandLine"/> class that
+            wraps <see cref="P:System.Configuration.ConfigurationManager.AppSettings"/>.
+            </summary>
+            <returns>A <see cref="T:Citi.Eqtg.Core.CommandLine"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.HasArg(System.String)">
+            <summary>
+            Returns a value indicating whether the given parameter is present.
+            </summary>
+            <param name="name">The name of the parameter.</param>
+            <returns><see langword="true"/> if the parameter is present on the command line,
+            otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.GetArg(System.String)">
+            <summary>
+            Returns the given parameter's value.
+            </summary>
+            <param name="name">The name of the parameter.</param>
+            <returns>The parameter's value, or <see langword="null"/> if the parameter
+            is not present on the command line.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.GetArg(System.String,System.String)">
+            <summary>
+            Returns the given parameter's value.
+            </summary>
+            <param name="name">The name of the parameter.</param>
+            <param name="defaultValue">The value to return if the given parameter is not present
+            on the command line.</param>
+            <returns>The parameter's value, or <paramref name="defaultValue"/> if the parameter
+            is not present on the command line.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.GetAllArgs(System.String,System.Collections.Generic.ICollection{System.String},System.String)">
+            <summary>
+            Get all the values specified for a given parameter.
+            
+            For example: -param 1,22,3 -param 4 -param 22,1
+            will fill the list with {"1","22","3","3","22","1"}
+            </summary>
+            <param name="name">the parameter name</param>
+            <param name="values">the list used for storing values</param>
+            <param name="separator">the list separator</param>
+            <returns>true if values have been found</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.GetArgList(System.String)">
+            <summary>
+            Get the list of all argument lits for a given option
+            
+            For example:
+            <code>>myprog -option1 1 2 3 -option1 5 9 0</code>
+            <code>GetArgList("option1")</code> will return the list: <code>{{1, 2, 3} {5, 9, 0}}</code>
+            </summary>
+            <param name="name">the option name</param>
+            <returns>the list of argument lists</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.GetArgInfoList(System.String)">
+            <summary>
+            Get all the command line arguments matching a given option name
+            </summary>
+            <param name="name">the option name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.Concat(Citi.Eqtg.Core.CommandLine)">
+            <summary>
+            Appends a <see cref="T:Citi.Eqtg.Core.CommandLine"/> to this instance.
+            </summary>
+            <param name="other">The <see cref="T:Citi.Eqtg.Core.CommandLine"/> to append to this instance.</param>
+            <returns>A new <see cref="T:Citi.Eqtg.Core.CommandLine"/>, formed from the parameters from this instance 
+            followed by <paramref name="other"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.Bind(System.Object)">
+            <summary>
+            Initializes an object's fields and properties from the command line.
+            </summary>
+            <example><code>
+            public sealed class CommandOptions
+            {
+            	public CommandOptions(CommandLine commandLine)
+            	{
+            		commandLine.Bind(this);
+            	}
+            
+            	private void LoadPosition(int posId)
+            	{
+            		myPosition = Position.Load(posId);
+            	}
+            
+            	[AppArg("posId")]
+            	public Position Position
+            	{
+            		get { return myPosition; }
+            	}
+            
+            	public int EodDate
+            	{
+            		get { return myEodDate; }
+            	}
+            
+            	[AppArg("eodDate")] private int myEodDate = 99999999;
+            	private Position myPosition;
+            }
+            </code></example>
+            <remarks>
+            <p>You should mark fields and properties in your class with the <see cref="T:Citi.Eqtg.Core.AppArgAttribute"/>,
+            specifying a parameter name for each one. Fields and properties need not be <see langword="public"/>
+            to be used through this method.</p>
+            <p>If a property is marked with <see cref="T:Citi.Eqtg.Core.AppArgAttribute"/>, this method looks for a
+            method whose name is <c>Load</c> followed by the name of the property. If a <c>Load</c> method
+            is present, this method calls the <c>Load</c> method instead of writing directly to the
+            property. This technique allows you to add read-only properties to your class while still
+            allowing you to use <see cref="M:Citi.Eqtg.Core.CommandLine.Bind(System.Object)"/>.</p>
+            </remarks>
+            <param name="instance">The instance to initialize.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.BindAndConsume(System.Object)">
+            <summary>
+            Initializes an object's fields and properties from the command line and returns any 
+            unused command line arguments.
+            </summary>
+            <remarks>
+            <p>You should mark fields and properties in your class with the <see cref="T:Citi.Eqtg.Core.AppArgAttribute"/>,
+            specifying a parameter name for each one. Fields and properties need not be <see langword="public"/>
+            to be used through this method.</p>
+            <p>If a property is marked with <see cref="T:Citi.Eqtg.Core.AppArgAttribute"/>, this method looks for a
+            method whose name is <c>Load</c> followed by the name of the property. If a <c>Load</c> method
+            is present, this method calls the <c>Load</c> method instead of writing directly to the
+            property. This technique allows you to add read-only properties to your class while still
+            allowing you to use <see cref="M:Citi.Eqtg.Core.CommandLine.BindAndConsume(System.Object)"/>.</p>
+            </remarks>
+            <param name="instance">The instance to initialize.</param>
+            <returns>A <see cref="T:Citi.Eqtg.Core.CommandLine"/> containing any command line arguments not used by 
+            <paramref name="instance"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.Bind(System.Type)">
+            <summary>
+            Initializes an type's static fields and properties from the command line.
+            </summary>
+            <example><code>
+            public sealed class CommandOptions
+            {
+            	static CommandOptions()
+            	{
+            		App.CommandLine.Bind(typeof(CommandOptions));
+            	}
+            
+            	static private void LoadPosition(int posId)
+            	{
+            		ourPosition = Position.Load(posId);
+            	}
+            
+            	[AppArg("posId")]
+            	static public Position Position
+            	{
+            		get { return ourPosition; }
+            	}
+            
+            	static public int EodDate
+            	{
+            		get { return ourEodDate; }
+            	}
+            
+            	[AppArg("eodDate")] static private int ourEodDate = 99999999;
+            	static private Position ourPosition;
+            }
+            </code></example>
+            <remarks>
+            <p>You should mark fields and properties in your class with the <see cref="T:Citi.Eqtg.Core.AppArgAttribute"/>,
+            specifying a parameter name for each one. Fields and properties need not be <see langword="public"/>
+            to be used through this method.</p>
+            <p>If a property is marked with <see cref="T:Citi.Eqtg.Core.AppArgAttribute"/>, this method looks for a
+            method whose name is <c>Load</c> followed by the name of the property. If a <c>Load</c> method
+            is present, this method calls the <c>Load</c> method instead of writing directly to the
+            property. This technique allows you to add read-only properties to your class while still
+            allowing you to use <see cref="M:Citi.Eqtg.Core.CommandLine.Bind(System.Type)"/>.</p>
+            </remarks>
+            <param name="type">The type to initialize.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.BindAndConsume(System.Type)">
+            <summary>
+            Initializes an type's static fields and properties from the command line and returns any 
+            unused command line arguments.
+            </summary>
+            <remarks>
+            <p>You should mark fields and properties in your class with the <see cref="T:Citi.Eqtg.Core.AppArgAttribute"/>,
+            specifying a parameter name for each one. Fields and properties need not be <see langword="public"/>
+            to be used through this method.</p>
+            <p>If a property is marked with <see cref="T:Citi.Eqtg.Core.AppArgAttribute"/>, this method looks for a
+            method whose name is <c>Load</c> followed by the name of the property. If a <c>Load</c> method
+            is present, this method calls the <c>Load</c> method instead of writing directly to the
+            property. This technique allows you to add read-only properties to your class while still
+            allowing you to use <see cref="M:Citi.Eqtg.Core.CommandLine.BindAndConsume(System.Type)"/>.</p>
+            </remarks>
+            <param name="type">The type to initialize.</param>
+            <returns>A <see cref="T:Citi.Eqtg.Core.CommandLine"/> containing any command line arguments not used by 
+            <paramref name="type"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.GetNames">
+            <summary>
+            Returns an array of the parameter names in this instance.
+            </summary>
+            <returns>An array of the parameter names in this instance</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.ToStringArray">
+            <summary>
+            Copies the parameters in this instance to a new <see cref="T:System.String"/> array.
+            </summary>
+            <returns>A new <see cref="T:System.String"/> array containing the parameters from this instance.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.ToString">
+            <summary>
+            Returns the parameters in this instance as a string.
+            </summary>
+            <returns>The parameters in this instance as a string.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLine.ToPasswordFreeString">
+            <summary>
+            Returns the parameters in this command line with any passwords hidden
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Citi.Eqtg.Core.CommandLine.Logger">
+            <summary>
+            Private accessor for class to access logger, don't access member directly
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.CommandLineException">
+            <summary>
+            The exception that is thrown when a required parameter is missing from the command line.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLineException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.CommandLineException"/> class.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLineException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.CommandLineException"/> class.
+            </summary>
+            <param name="message">A <see cref="T:System.String"/> that describes the error.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLineException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.CommandLineException"/> class.
+            </summary>
+            <param name="info">The data needed to serialize or deserialize an object.</param>
+            <param name="context">The source and destination of a given serialized stream.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLineException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> with information about the exception.
+            </summary>
+            
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> that contains contextual information about the source or destination. </param>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> that holds the serialized object data about the exception being thrown. </param>
+            <exception cref="T:System.ArgumentNullException">The info parameter is a null reference (Nothing in Visual Basic). </exception><filterpriority>2</filterpriority><PermissionSet><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Read="*AllFiles*" PathDiscovery="*AllFiles*" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="SerializationFormatter" /></PermissionSet>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLineException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.CommandLineException"/> class.
+            </summary>
+            <param name="message">A <see cref="T:System.String"/> that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLineException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.CommandLineException"/> class.
+            </summary>
+            <param name="message">A <see cref="T:System.String"/> that describes the error.</param>
+            <param name="parameterName">The name of the missing command-line parameter.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.CommandLineException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.CommandLineException"/> class.
+            </summary>
+            <param name="message">A <see cref="T:System.String"/> that describes the error.</param>
+            <param name="parameterName">The name of the missing command-line parameter.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="P:Citi.Eqtg.Core.CommandLineException.ParameterName">
+            <summary>
+            Gets the name of the missing parameter.
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.ConsoleAppHost">
+            <summary>
+            Implements a console application.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ConsoleAppHost.OnRun(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:Citi.Eqtg.Core.ConsoleAppHost.Run"/> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ConsoleAppHost.RunMainLoop">
+            <summary>
+            Called by <see cref="M:Citi.Eqtg.Core.App.Run"/> to run the application.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ConsoleAppHost.Stop">
+            <summary>
+            Called by <see cref="M:Citi.Eqtg.Core.App.Stop"/> to request that the application exit.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ConsoleAppHost.OnStopping(System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Raises the <see cref="E:Citi.Eqtg.Core.ConsoleAppHost.Stopping"/> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="E:Citi.Eqtg.Core.ConsoleAppHost.Run">
+            <summary>
+            Occurs when the program is started.
+            </summary>
+        </member>
+        <member name="E:Citi.Eqtg.Core.ConsoleAppHost.Stopping">
+            <summary>
+            Occurs when the Ctrl+C shortcut is pressed, or the console window is closed.
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DaemonAppHost">
+            <summary>
+            Implements an application that can run as a Windows service or from the command line.
+            </summary>
+            <remarks>
+            <para>Applications that use <see cref="T:Citi.Eqtg.Core.DaemonAppHost"/> can be run from the command line if the <c>-asWin32Console</c>
+            switch is provided.</para>
+            <para>You can provide an installer for an application that uses this class by using <see cref="T:Citi.Eqtg.Core.DaemonAppInstaller"/>.</para>
+            </remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DaemonAppHost.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DaemonAppHost.ReadCommandLine">
+            <summary>
+            Called by <see cref="T:Citi.Eqtg.Core.CommandLine"/> to assemble the application's command command line
+            the first time it is needed.
+            </summary>
+            <returns>A <see cref="T:Citi.Eqtg.Core.CommandLine"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DaemonAppHost.RunMainLoop">
+            <summary>
+            Called by <see cref="M:Citi.Eqtg.Core.App.Run"/> to run the application.
+            </summary>
+            <remarks>
+            In console mode, this method behaves the same way as <see cref="M:Citi.Eqtg.Core.ConsoleAppHost.RunMainLoop"/>. When 
+            installed as a service, this method connects to the Service Control Manager and waits for a request
+            to start the service.
+            </remarks>
+        </member>
+        <member name="P:Citi.Eqtg.Core.DaemonAppHost.AppNamespace">
+            <summary>
+            Called by <see cref="P:Citi.Eqtg.Core.App.AppNamespace"/> to get the namespace where this instance of 
+            the application is running.
+            </summary>
+            <remarks>
+            The namespace is obtained by taking the service's display name and removing the <see cref="P:Citi.Eqtg.Core.App.ShortName"/>
+            prefix.
+            </remarks>
+        </member>
+        <member name="P:Citi.Eqtg.Core.DaemonAppHost.CommandLineArgs">
+            <summary>
+            Gets or sets the command line arguments passed to <see cref="M:Citi.Eqtg.Core.App.Init(System.String[],System.Reflection.Assembly)"/>.
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DaemonAppInstaller">
+            <summary>
+            Installs an application that uses <see cref="T:Citi.Eqtg.Core.DaemonAppHost"/> as a Windows service.
+            </summary>
+            <remarks>
+            <p>To use this class, you should declare your own installer class in your application,
+            which either inherits from <see cref="T:Citi.Eqtg.Core.DaemonAppInstaller"/>, or inherits from 
+            <see cref="T:System.Configuration.Install.Installer"/> and creates an instance of <see cref="T:Citi.Eqtg.Core.DaemonAppInstaller"/>
+            at run time.</p>
+            <p>To install an application that uses <see cref="T:Citi.Eqtg.Core.DaemonAppInstaller"/> or other
+            classes based on <see cref="T:System.Configuration.Install.Installer"/>, use the <c>installutil.exe</c> program
+            provided with the .NET Framework.</p>
+            </remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DaemonAppInstaller.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DaemonAppInstaller"/> class.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DaemonAppInstaller.OnBeforeInstall(System.Collections.IDictionary)">
+            <summary>
+            Raises the <see cref="E:System.Configuration.Install.Installer.BeforeInstall"/> event.
+            </summary>
+            <param name="savedState">An <see cref="T:System.Collections.IDictionary"/> that contains the state 
+            of the computer before the installers in the <see cref="P:System.Configuration.Install.Installer.Installers"/> property are 
+            installed. This <see cref="T:System.Collections.IDictionary"/> object should be empty at this point.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DaemonAppInstaller.OnBeforeUninstall(System.Collections.IDictionary)">
+            <summary>
+            Raises the <see cref="E:System.Configuration.Install.Installer.BeforeUninstall"/> event.
+            </summary>
+            <param name="savedState">An <see cref="T:System.Collections.IDictionary"/> that contains the state 
+            of the computer before the installers in the <see cref="P:System.Configuration.Install.Installer.Installers"/> property 
+            uninstall their installations.</param>
+        </member>
+        <member name="P:Citi.Eqtg.Core.DaemonAppInstaller.HelpText">
+            <summary>
+            Gets the help text for all the installers in the installer collection.
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DateUtils">
+            <summary>
+            Contains methods to convert between integers in Rover 8 format and <see cref="T:System.DateTime"/> structures.
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.DateUtils.Latest">
+            <summary>
+            When used in the database, represents the latest version of a piece of data.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DateUtils.Rover8ToDateTime(System.Int32)">
+            <summary>
+            Converts an integer in Rover 8 format to a <see cref="T:System.DateTime"/> structure.
+            </summary>
+            <remarks>
+            <p>The following special values are recognised by this method:</p>
+            <list type="table">
+            	<listheader>
+            		<term><paramref name="rover8"/></term>
+            		<description>Returns</description>
+            	</listheader>
+            	<item>
+            		<term><see cref="F:Citi.Eqtg.Core.DateUtils.Latest"/>, i.e. 99999999</term>
+            		<description><see cref="F:System.DateTime.MaxValue"/></description>
+            	</item>
+            	<item>
+            		<term>Invalid date</term>
+            		<description><see cref="F:System.DateTime.MinValue"/></description>
+            	</item>
+            </list>
+            </remarks>
+            <param name="rover8">An integer in Rover 8 format.</param>
+            <returns>A <see cref="T:System.DateTime"/> structure that represents <paramref name="rover8"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DateUtils.DateTimeToRover8(System.DateTime)">
+            <summary>
+            Converts a <see cref="T:System.DateTime"/> structure to an integer in Rover 8 format.
+            </summary>
+            <remarks>If <paramref name="dateTime"/> is equal to <see cref="F:System.DateTime.MaxValue"/>,
+            this function returns <see cref="F:Citi.Eqtg.Core.DateUtils.Latest"/>, i.e. 99999999.</remarks>
+            <param name="dateTime">A <see cref="T:System.DateTime"/> structure.</param>
+            <returns>An integer in Rover 8 format.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DateUtils.AddWeekdays(System.DateTime,System.Int32)">
+            <summary>
+            Move forwards (or backwards if negative) by the given number of days, skipping weekends.
+            </summary>
+            <param name="days">Number of days to offset.</param>
+            <returns>The new date.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DateUtils.GetWeekday(System.DateTime,System.Boolean)">
+            <summary>
+            Move forward or backward one day, skipping weekends (but not other holidays).
+            </summary>
+            <param name="forwards">Move forward or not.</param>
+            <returns>The new date.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DateUtils.GetNextWeekday(System.DateTime)">
+            <summary>
+            Move forward one day, skipping weekends (but not other holidays).
+            </summary>
+            <returns>The new date.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DateUtils.Roll(System.DateTime,System.Boolean)">
+            <summary>
+            If this is a weekend, get moved to either Friday or the Monday.
+            </summary>
+            <param name="forwards">true -> Monday, false -> Friday.</param>
+            <returns>The new date.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DateUtils.RollForward(System.DateTime)">
+            <summary>
+            If this is a weekend, get moved to Monday.
+            </summary>
+            <returns>The new DateTime</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DateUtils.RollBackward(System.DateTime)">
+            <summary>
+            If this is a weekend, get moved to Friday.
+            </summary>
+            <returns>The new DateTime</returns>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DBCommandLogger">
+            <summary>
+            Provides a wrapper for <see cref="T:System.Data.IDbCommand"/> instances that logs SQL commands.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBCommandLogger.CreateCommand(System.Data.IDbCommand)">
+            <summary>
+            Wraps an <see cref="T:System.Data.IDbCommand"/>.
+            </summary>
+            <remarks>
+            The <paramref name="instance"/> must inherit from <see cref="T:System.MarshalByRefObject"/>. This applies
+            to all <see cref="T:System.Data.IDbCommand"/> implementations in namespaces within <see cref="N:System.Data"/>.
+            </remarks>
+            <param name="instance">The <see cref="T:System.Data.IDbCommand"/> to wrap.</param>
+            <returns>An <see cref="T:System.Data.IDbCommand"/> that wraps <paramref name="instance"/> and logs SQL commands.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBCommandLogger.GetInnerCommand(System.Data.IDbCommand)">
+            <summary>
+            Returns the <see cref="T:System.Data.IDbCommand"/> wrapped by the <see cref="T:Citi.Eqtg.Core.DBCommandLogger"/>.
+            </summary>
+            <param name="db">An <see cref="T:System.Data.IDbCommand"/> returned by <see cref="M:Citi.Eqtg.Core.DBCommandLogger.CreateCommand(System.Data.IDbCommand)"/>.</param>
+            <returns>The <see cref="T:System.Data.IDbCommand"/> wrapped by the <see cref="T:Citi.Eqtg.Core.DBCommandLogger"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBCommandLogger.Invoke(System.Runtime.Remoting.Messaging.IMessage)">
+            <summary>
+            When overridden in a derived class, invokes the method that is specified in the provided <see cref="T:System.Runtime.Remoting.Messaging.IMessage"></see> on the remote object that is represented by the current instance.
+            </summary>
+            
+            <returns>
+            The message returned by the invoked method, containing the return value and any out or ref parameters.
+            </returns>
+            
+            <param name="msg">A <see cref="T:System.Runtime.Remoting.Messaging.IMessage"></see> that contains a <see cref="T:System.Collections.IDictionary"></see> of information about the method call. </param><PermissionSet><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="Infrastructure" /></PermissionSet>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DBConnectionInfo">
+            <summary>
+            Contains the parameters needed to connect to a database.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionInfo.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DBConnectionInfo"/> class for SQL Server trusted connections.
+            </summary>
+            <param name="serverName">The name of the server.</param>
+            <param name="databaseName">The name of the connection's initial database.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionInfo.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DBConnectionInfo"/> class for SQL Server trusted connections.
+            </summary>
+            <param name="serverName">The name of the server.</param>
+            <param name="databaseName">The name of the connection's initial database.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionInfo.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DBConnectionInfo"/> class.
+            </summary>
+            <param name="serverName">The name of the server.</param>
+            <param name="userName">The user's login name.</param>
+            <param name="password">The user's password.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionInfo.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DBConnectionInfo"/> class.
+            </summary>
+            <param name="serverName">The name of the server.</param>
+            <param name="userName">The user's login name.</param>
+            <param name="password">The user's password.</param>
+            <param name="databaseName">The name of the connection's initial database.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionInfo.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DBConnectionInfo"/> class.
+            </summary>
+            <param name="serverName">The name of the server.</param>
+            <param name="userName">The user's login name.</param>
+            <param name="password">The user's password.</param>
+            <param name="databaseName">The name of the connection's initial database.</param>
+            <param name="appName">The name of the application.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionInfo.#ctor(System.String,System.String,System.String,Citi.Eqtg.Core.DBServerType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DBConnectionInfo"/> class.
+            </summary>
+            <param name="serverName">The name of the server.</param>
+            <param name="userName">The user's login name.</param>
+            <param name="password">The user's password.</param>
+            <param name="serverType">A <see cref="T:Citi.Eqtg.Core.DBServerType"/> that indicates the ADO.NET provider
+            to use to connect to the database.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionInfo.#ctor(System.String,System.String,System.String,System.String,Citi.Eqtg.Core.DBServerType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DBConnectionInfo"/> class.
+            </summary>
+            <param name="serverName">The name of the server.</param>
+            <param name="userName">The user's login name.</param>
+            <param name="password">The user's password.</param>
+            <param name="databaseName">The name of the connection's initial database.</param>
+            <param name="serverType">A <see cref="T:Citi.Eqtg.Core.DBServerType"/> that indicates the ADO.NET provider
+            to use to connect to the database.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionInfo.#ctor(System.String,System.String,System.String,System.String,System.String,Citi.Eqtg.Core.DBServerType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DBConnectionInfo"/> class.
+            </summary>
+            <param name="serverName">The name of the server.</param>
+            <param name="userName">The user's login name.</param>
+            <param name="password">The user's password.</param>
+            <param name="databaseName">The name of the connection's initial database.</param>
+            <param name="appName">The name of the application.</param>
+            <param name="serverType">A <see cref="T:Citi.Eqtg.Core.DBServerType"/> that indicates the ADO.NET provider
+            to use to connect to the database.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionInfo.#ctor(Citi.Eqtg.Core.CommandLine)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DBConnectionInfo"/> class.
+            </summary>
+            <remarks>
+            <p>Command line parameters recognised by this constructor are as follows.</p>
+            <list type="table">
+            	<listheader>
+            		<term>Parameter name</term>
+            		<description>Purpose</description>
+            	</listheader>
+            	<item>
+            		<term><c>-S</c></term>
+            		<description>
+            			<para>Server name (SQL Server) or data source name (ODBC).</para>
+            			<para>Required.</para>
+            		</description>
+            	</item>
+            	<item>
+            		<term><c>-U</c></term>
+            		<description>
+            			<para>Login name.</para>
+            			<para>Required.</para>
+            		</description>
+            	</item>
+            	<item>
+            		<term><c>-P</c></term>
+            		<description>
+            			<para>Password.</para>
+            			<para>Required.</para>
+            		</description>
+            	</item>
+            	<item>
+            		<term><c>-D</c></term>
+            		<description>
+            			<para>Initial database name.</para>
+            			<para>Optional.</para>
+            		</description>
+            	</item>
+            	<item>
+            		<term><c>-provider</c></term>
+            		<description>
+            			<para>Database server type. One of the members of the <see cref="T:Citi.Eqtg.Core.DBServerType"/> enumeration.</para>
+            			<para>Optional; defaults to <see cref="F:Citi.Eqtg.Core.DBServerType.Odbc"/>.</para>
+            		</description>
+            	</item>
+            </list>
+            </remarks>
+            <param name="commandLine">A <see cref="T:Citi.Eqtg.Core.CommandLine"/> that will provide the 
+            <c>-S</c>, <c>-U</c>, <c>-P</c>, <c>-D</c> and <c>-provider</c> parameters.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionInfo.CreateOdbcDsnLessConnection">
+            <summary>
+            Creates and Opens a DSN-less ODBC connection <see cref="T:System.Data.IDbConnection"/>.
+            </summary>
+            <returns>An open database connection<see cref="T:System.Data.IDbConnection"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionInfo.CreateDBConnection">
+            <summary>
+            Creates an open <see cref="T:System.Data.IDbConnection"/>.
+            </summary>
+            <returns>An open <see cref="T:System.Data.IDbConnection"/>.</returns>
+        </member>
+        <member name="P:Citi.Eqtg.Core.DBConnectionInfo.ConnectionString">
+            <summary>
+            The connection string for the connection
+            </summary>
+            <remarks>
+            The connection string is exposed for the compatibility with the EQTG.Business securities loading code
+            </remarks>
+        </member>
+        <member name="P:Citi.Eqtg.Core.DBConnectionInfo.ServerType">
+            <summary>
+            Indicate ADO.Net provider
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DBConnectionLogger">
+            <summary>
+            Provides a wrapper for <see cref="T:System.Data.IDbConnection"/> instances that logs SQL commands.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionLogger.CreateConnection(System.Data.IDbConnection)">
+            <summary>
+            Wraps an <see cref="T:System.Data.IDbConnection"/>.
+            </summary>
+            <remarks>
+            The <paramref name="instance"/> must inherit from <see cref="T:System.MarshalByRefObject"/>. This applies
+            to all <see cref="T:System.Data.IDbConnection"/> implementations in namespaces within <see cref="N:System.Data"/>.
+            </remarks>
+            <param name="instance">The <see cref="T:System.Data.IDbConnection"/> to wrap.</param>
+            <returns>An <see cref="T:System.Data.IDbConnection"/> that wraps <paramref name="instance"/> and logs SQL commands.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionLogger.GetInnerConnection(System.Data.IDbConnection)">
+            <summary>
+            Returns the <see cref="T:System.Data.IDbConnection"/> wrapped by the <see cref="T:Citi.Eqtg.Core.DBConnectionLogger"/>.
+            </summary>
+            <param name="db">An <see cref="T:System.Data.IDbConnection"/> returned by <see cref="M:Citi.Eqtg.Core.DBConnectionLogger.CreateConnection(System.Data.IDbConnection)"/>.</param>
+            <returns>The <see cref="T:System.Data.IDbConnection"/> wrapped by the <see cref="T:Citi.Eqtg.Core.DBConnectionLogger"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBConnectionLogger.Invoke(System.Runtime.Remoting.Messaging.IMessage)">
+            <summary>
+            When overridden in a derived class, invokes the method that is specified in the provided <see cref="T:System.Runtime.Remoting.Messaging.IMessage"></see> on the remote object that is represented by the current instance.
+            </summary>
+            
+            <returns>
+            The message returned by the invoked method, containing the return value and any out or ref parameters.
+            </returns>
+            
+            <param name="msg">A <see cref="T:System.Runtime.Remoting.Messaging.IMessage"></see> that contains a <see cref="T:System.Collections.IDictionary"></see> of information about the method call. </param><PermissionSet><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="Infrastructure" /></PermissionSet>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DBLoader">
+            <summary>
+            Updates field and property values from an <see cref="T:System.Data.IDataRecord"/> or an <see cref="T:System.Data.IDataReader"/>.
+            </summary>
+            <remarks>
+            <para>
+            <see cref="T:Citi.Eqtg.Core.DBLoader"/> populates an object's private fields and public properties from an 
+            <see cref="T:System.Data.IDataRecord"/> or an <see cref="T:System.Data.IDataReader"/>. Apply the <see cref="T:Citi.Eqtg.Core.DBFieldAttribute"/>
+            to any fields and properties you want populated.
+            </para>
+            <para>
+            Any property that doesn't have a setter is ignored.
+            </para>
+            <para>
+            Database columns whose value is <see cref="T:System.DBNull"/> are not populated.
+            </para>
+            </remarks>
+            <example><code>
+            public sealed VersionInfo
+            {
+            	private VersionInfo()
+            	{
+            	}
+            
+            	static public VersionInfo[] LoadVersions(IDbConnection db)
+            	{
+            		using (IDbCommand cmd = db.CreateCommand())
+            		{
+            			cmd.CommandText = "select * from version";
+            
+            			using (IDataReader reader = cmd.ExecuteReader())
+            				return (VersionInfo[]) ourLoader.ReadToEnd(reader);
+            		}
+            	}
+            
+            	public string Application
+            	{
+            		get { return myApplication; }
+            	}
+            
+            	public string Trader
+            	{
+            		get { return myTrader; }
+            	}
+            
+            	[DBField("version")]
+            	public string VersionString
+            	{
+            		get { return myVersion.ToString(); }
+            		set { myVersion = new Version(value); }
+            	}
+            
+            	static private DBLoader ourLoader = new DBLoader(typeof(VersionInfo));
+            
+            	[DBField("application")]
+            	private string myApplication;
+            
+            	[DBField("trader")]
+            	private string myTrader;
+            
+            	private Version myVersion;
+            }
+            </code></example>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBLoader.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DBLoader"/> class.
+            </summary>
+            <remarks>
+            <see cref="P:Citi.Eqtg.Core.DBLoader.IgnoreMissingFields"/> is set to <see langword="false"/>, so an
+            <see cref="T:System.IndexOutOfRangeException"/> is thrown when fields are not present in the result set.
+            </remarks>
+            <param name="type">The <see cref="T:System.Type"/> used to create instances and populate fields and properties.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBLoader.#ctor(System.Type,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DBLoader"/> class.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> used to create instances and populate fields and properties.</param>
+            <param name="ignoreMissingFields">If <see langword="true"/>, indicates that fields that are not present
+            in the result set are given default values. If <see langword="false"/>, indicates that an
+            <see cref="T:System.IndexOutOfRangeException"/> is thrown when fields are not present in the result set.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBLoader.LoadInstance(System.Data.IDataRecord,System.Object)">
+            <summary>
+            Updates the fields properties in the specified object from the columns in the specified
+            <see cref="T:System.Data.IDataRecord"/>.
+            </summary>
+            <param name="record">The <see cref="T:System.Data.IDataRecord"/> used to obtain field and property values.</param>
+            <param name="obj">The object, of type <see cref="P:Citi.Eqtg.Core.DBLoader.InstanceType"/>, whose fields and properties are 
+            updated from <paramref name="record"/>.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBLoader.LoadNew(System.Data.IDataRecord)">
+            <summary>
+            Creates a new instance of type <see cref="P:Citi.Eqtg.Core.DBLoader.InstanceType"/> and updates its fields and properties
+            from the specified <see cref="T:System.Data.IDataRecord"/>.
+            </summary>
+            <param name="record">The <see cref="T:System.Data.IDataRecord"/> used to obtain field and property values.</param>
+            <returns>A new instance of <see cref="P:Citi.Eqtg.Core.DBLoader.InstanceType"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBLoader.Read(System.Data.IDataReader,System.Collections.IDictionary)">
+            <summary>
+            Reads a record from the specified <see cref="T:System.Data.IDataReader"/> and uses its columns to create a new 
+            instance of type <see cref="P:Citi.Eqtg.Core.DBLoader.InstanceType"/>.
+            </summary>
+            <param name="reader">The <see cref="T:System.Data.IDataReader"/> used to obtain field and property values.</param>
+            <param name="fieldToOrdinalMap">An <see cref="T:System.Collections.IDictionary"/> used to cache column ordinals
+            between calls to <see cref="M:Citi.Eqtg.Core.DBLoader.Read(System.Data.IDataReader,System.Collections.IDictionary)"/>.</param>
+            <returns>A new instance of <see cref="P:Citi.Eqtg.Core.DBLoader.InstanceType"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBLoader.Read(System.Data.IDataReader)">
+            <summary>
+            Reads a record from the specified <see cref="T:System.Data.IDataReader"/> and uses its columns to create a new 
+            instance of type <see cref="P:Citi.Eqtg.Core.DBLoader.InstanceType"/>.
+            </summary>
+            <param name="reader">The <see cref="T:System.Data.IDataReader"/> used to obtain field and property values.</param>
+            <returns>A new instance of <see cref="P:Citi.Eqtg.Core.DBLoader.InstanceType"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBLoader.ReadToEnd(System.Data.IDataReader,System.Collections.IList)">
+            <summary>
+            Reads all records from the specified <see cref="T:System.Data.IDataReader"/> and uses its columns to populate a
+            list of instances of type <see cref="P:Citi.Eqtg.Core.DBLoader.InstanceType"/>.
+            </summary>
+            <param name="reader">The <see cref="T:System.Data.IDataReader"/> used to obtain field and property values.</param>
+            <param name="list">The list to populate with instances of <see cref="P:Citi.Eqtg.Core.DBLoader.InstanceType"/>.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBLoader.ReadToEnd(System.Data.IDataReader)">
+            <summary>
+            Reads all records from the specified <see cref="T:System.Data.IDataReader"/> and uses its columns to populate a
+            list of instances of type <see cref="P:Citi.Eqtg.Core.DBLoader.InstanceType"/>.
+            </summary>
+            <param name="reader">The <see cref="T:System.Data.IDataReader"/> used to obtain field and property values.</param>
+            <returns>An array of instances of <see cref="P:Citi.Eqtg.Core.DBLoader.InstanceType"/>.</returns>
+        </member>
+        <member name="P:Citi.Eqtg.Core.DBLoader.InstanceType">
+            <summary>
+            Gets the <see cref="T:System.Type"/> used to create instances and populate fields and properties.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.DBLoader.IgnoreMissingFields">
+            <summary>
+            Gets or sets a value indicating whether fields that are not present in the result set are 
+            given default values.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBOdbcDriver.GetListDrivers">
+            <summary>
+            Returns the list of the installed odbc drivers
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBOdbcDriver.IsDriverInstalled(System.String)">
+            <summary>
+            Returns true if the odbc driver has been installed
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DBServerType">
+            <summary>
+            Indicates the ADO.NET provider to use when connecting to a database.
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.DBServerType.Odbc">
+            <summary>
+            Use <see cref="T:System.Data.Odbc.OdbcConnection"/>
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.DBServerType.SqlServer">
+            <summary>
+            Use <see cref="T:System.Data.SqlClient.SqlConnection"/>
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.DBServerType.OdbcDSNLess">
+            <summary>
+            Use <see cref="T:System.Data.Odbc.OdbcConnection"/>
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.DBServerType.Sybase">
+            <summary>
+            Provided so that <c>-provider sybase</c> works on the command line.
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.DBServerType.Default">
+            <summary>
+            Provided to allow the ability to switch default database providers in the future.
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DBShortCodeAttribute">
+            <summary>
+            Specifies a short code for an enum member that will be used when writing to a database table.
+            Mappings are provided to and from the short code.
+            </summary>
+            <example>
+            <code>
+            </code>
+            </example>
+            <remarks>
+            Short codes are often used in the database, but mapped in code to enum values. This Attribute
+            allows this process to be simplified by allowing the developer to use Metadata to define these
+            codes. A common set of routines can then be used to map to and from the short codes.
+            </remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBShortCodeAttribute.#ctor(System.String)">
+            <summary>
+            Initialises a new instance of the DBShortCodeAttribute class with the specified Short Code
+            </summary>
+            <param name="shortCode">Short code to associate with the enum member.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBShortCodeAttribute.GetShortCode(System.Object,System.String)">
+            <summary>
+            Retrieves the Database Short Code for the specified enum member.
+            </summary>
+            <param name="enumValue">Enum member to return the Database Short Code for.</param>
+            <param name="defaultValue">Enum value to return if the ShortCode does not match any of the known values</param>
+            <returns></returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBShortCodeAttribute.GetEnumFromShortCode(System.Type,System.String,System.Object)">
+            <summary>
+            Function that takes an enum and a ShortCode, and returns the enum value associated with that ShortCode.
+            </summary>
+            <param name="shortCodeEnum">Enum containing the ShortCode to search for</param>
+            <param name="shortCode">ShortCode to return Enum value for</param>
+            <param name="defaultValue">Enum value to return if the ShortCode does not match any of the known values</param>
+            <returns>
+            The Enum value matching the ShortCode.
+            </returns>
+        </member>
+        <member name="F:Citi.Eqtg.Core.DBShortCodeAttribute.myShortCode">
+            <summary>
+            Member variable storing the ShortCode associated with this Enum value.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.DBShortCodeAttribute.ShortCode">
+            <summary>
+            The ShortCode associated with this Enum value.
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DBTransactionLogger">
+            <summary>
+            Provides a wrapper for <see cref="T:System.Data.IDbTransaction"/> instances that logs SQL commands.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBTransactionLogger.CreateTransaction(System.Data.IDbTransaction,System.Data.IDbConnection)">
+            <summary>
+            Wraps an <see cref="T:System.Data.IDbTransaction"/>.
+            </summary>
+            <remarks>
+            The <paramref name="instance"/> must inherit from <see cref="T:System.MarshalByRefObject"/>. This applies
+            to all <see cref="T:System.Data.IDbTransaction"/> implementations in namespaces within <see cref="N:System.Data"/>.
+            </remarks>
+            <param name="instance">The <see cref="T:System.Data.IDbTransaction"/> to wrap.</param>
+            <param name="db">The <see cref="T:System.Data.IDbConnection"/> that should be returned by the <see cref="P:System.Data.IDbTransaction.Connection"/> property.</param>
+            <returns>An <see cref="T:System.Data.IDbTransaction"/> that wraps <paramref name="instance"/> and logs SQL commands.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBTransactionLogger.Invoke(System.Runtime.Remoting.Messaging.IMessage)">
+            <summary>
+            When overridden in a derived class, invokes the method that is specified in the provided <see cref="T:System.Runtime.Remoting.Messaging.IMessage"></see> on the remote object that is represented by the current instance.
+            </summary>
+            
+            <returns>
+            The message returned by the invoked method, containing the return value and any out or ref parameters.
+            </returns>
+            
+            <param name="msg">A <see cref="T:System.Runtime.Remoting.Messaging.IMessage"></see> that contains a <see cref="T:System.Collections.IDictionary"></see> of information about the method call. </param><PermissionSet><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="Infrastructure" /></PermissionSet>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBUtils.BuildParameters(System.Data.IDbCommand,System.Object[])">
+            <summary>
+            Adds an array of unnamed parameters to an <see cref="T:System.Data.IDbCommand"/>.
+            </summary>
+            <remarks>
+            Use this method to populate the <see cref="P:System.Data.IDbCommand.Parameters"/> collection
+            from an array of <see langword="object"/>.
+            </remarks>
+            <param name="command">An <see cref="T:System.Data.IDbCommand"/> that will receive the parameters.</param>
+            <param name="args">An array of parameter values.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBUtils.GetString(System.Data.IDataRecord,System.Int32)">
+            <summary>
+             will trim the string if it is not null
+            </summary>
+            <param name="reader"></param>
+            <param name="ordinal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBUtils.RunSQL(System.String,System.Data.IDbConnection,System.Int32)">
+            <summary>
+            Run a SQL query
+            </summary>
+            <param name="sql">The SQL query</param>
+            <param name="dbConnection">The database connection</param>
+            <param name="timeout">The connection timeout</param>
+            <returns>The query results</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBUtils.RunSQL(System.String,System.Data.IDbConnection)">
+            <summary>
+            Run a SQL query
+            </summary>
+            <param name="sql">The SQL query</param>
+            <param name="dbConnection">The database connection</param>
+            <returns>The query results</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBUtils.ColumnExist(System.Data.IDataReader,System.String)">
+            <summary>
+            Returns true if the column exists
+            </summary>
+            <param name="dataReader">Data Reader</param>
+            <param name="colName">Column name to search</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DBUtils.LogQueryTime(System.DateTime,System.String)">
+            <summary>
+            Logs out the time taken by the sql statement
+            </summary>
+            <param name="dtStart">The time the query was started</param>
+            <param name="sql">The SQL query</param>
+        </member>
+        <member name="P:Citi.Eqtg.Core.DBUtils.DefaultCommandTimeout">
+            <summary>
+            This timeout will be applied to all commands executed in this class
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DdxAttribute">
+            <summary>
+            TODO
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DdxAttribute.#ctor(System.String)">
+            <summary>
+            TODO
+            </summary>
+            <param name="controlName">TODO</param>
+        </member>
+        <member name="P:Citi.Eqtg.Core.DdxAttribute.ControlName">
+            <summary>
+            TODO
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.Deque">
+            <summary>
+            Represents a collection of objects that can be accessed from either end.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Deque.Clear">
+            <summary>
+            Removes all objects from the <see cref="T:Citi.Eqtg.Core.Deque"/>.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Deque.Contains(System.Object)">
+            <summary>
+            Determines whether an element is in the <see cref="T:Citi.Eqtg.Core.Deque"/>.
+            </summary>
+            <param name="item">The object to locate in the <see cref="T:Citi.Eqtg.Core.Deque"/>.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Deque.PushFront(System.Object)">
+            <summary>
+            Adds an object to the beginning of the <see cref="T:Citi.Eqtg.Core.Deque"/>.
+            </summary>
+            <param name="item">The object to add to the <see cref="T:Citi.Eqtg.Core.Deque"/>.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Deque.PushBack(System.Object)">
+            <summary>
+            Adds an object to the end of the <see cref="T:Citi.Eqtg.Core.Deque"/>.
+            </summary>
+            <param name="item">The object to add to the <see cref="T:Citi.Eqtg.Core.Deque"/>.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Deque.PopFront">
+            <summary>
+            Removes and returns the object at the beginning of the <see cref="T:Citi.Eqtg.Core.Deque"/>.
+            </summary>
+            <returns>The object that is removed from the beginning of the <see cref="T:Citi.Eqtg.Core.Deque"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">The <see cref="T:Citi.Eqtg.Core.Deque"/> is empty.</exception>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Deque.PopBack">
+            <summary>
+            Removes and returns the object at the end of the <see cref="T:Citi.Eqtg.Core.Deque"/>.
+            </summary>
+            <returns>The object that is removed from the end of the <see cref="T:Citi.Eqtg.Core.Deque"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">The <see cref="T:Citi.Eqtg.Core.Deque"/> is empty.</exception>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Deque.PeekFront">
+            <summary>
+            Returns the object at the beginning of the <see cref="T:Citi.Eqtg.Core.Deque"/> without removing it.
+            </summary>
+            <returns>The object at the beginning of the <see cref="T:Citi.Eqtg.Core.Deque"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">The <see cref="T:Citi.Eqtg.Core.Deque"/> is empty.</exception>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Deque.PeekBack">
+            <summary>
+            Returns the object at the end of the <see cref="T:Citi.Eqtg.Core.Deque"/> without removing it.
+            </summary>
+            <returns>The object at the end of the <see cref="T:Citi.Eqtg.Core.Deque"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">The <see cref="T:Citi.Eqtg.Core.Deque"/> is empty.</exception>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Deque.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the <see cref="T:Citi.Eqtg.Core.Deque"/> elements to an existing one-dimensional <see cref="T:System.Array"/>, 
+            starting at the specified array index.
+            </summary>
+            <param name="array">The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements 
+            copied from <see cref="T:Citi.Eqtg.Core.Deque"/>. The <see cref="T:System.Array"/> must have zero-based indexing.</param>
+            <param name="index">The zero-based index in <i>array</i> at which copying begins. </param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Deque.GetEnumerator">
+            <summary>
+            Returns an enumerator that can iterate through the <see cref="T:Citi.Eqtg.Core.Deque"/>.
+            </summary>
+            <returns>An <see cref="T:System.Collections.IEnumerator"/> for the <see cref="T:Citi.Eqtg.Core.Deque"/>.</returns>
+        </member>
+        <member name="P:Citi.Eqtg.Core.Deque.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the <see cref="T:Citi.Eqtg.Core.Deque"/> is synchronized
+            (thread-safe).
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.Deque.Count">
+            <summary>
+            Gets the number of elements contained in the <see cref="T:Citi.Eqtg.Core.Deque"/>.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.Deque.SyncRoot">
+            <summary>
+            Gets an object that can be used to synchronize access to the <see cref="T:Citi.Eqtg.Core.Deque"/>.
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DialogDataExchanger">
+            <summary>
+            TODO
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DialogDataExchanger.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            TODO
+            </summary>
+            <param name="container">TODO</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DialogDataExchanger.Load">
+            <summary>
+            TODO
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DialogDataExchanger.SaveAndValidate(System.Collections.Hashtable)">
+            <summary>
+            TODO
+            </summary>
+            <returns>TODO</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DialogDataExchanger.SaveAndValidateWithMessage">
+            <summary>
+            TODO
+            </summary>
+            <param name="owner">TODO</param>
+            <returns>TODO</returns>
+        </member>
+        <member name="P:Citi.Eqtg.Core.DialogDataExchanger.Form">
+            <summary>
+            TODO
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.DialogDataExchanger.ErrorProvider">
+            <summary>
+            TODO
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DnsMXMailSender">
+            <summary>
+            Sends mail messages based on a DNS lookup.
+            </summary>
+            <example><code>
+            Console.WriteLine("Running main method to send mail. {0}.", "");
+            
+            DnsMXMailSender mailSender = new DnsMxMailSender();
+            string hostList = mailSender.PrintMXEntries();
+            Console.WriteLine("MX entries:\n" + hostList);
+            MailMessage mail = new MailMessage();
+            // Will send mail to whoever runs this..
+            mail.To = Environment.GetEnvironmentVariable("NOTIFY_ADDRESS");
+            mail.From = Environment.GetEnvironmentVariable("NOTIFY_ADDRESS");
+            mail.Body = "Test email for DNS lookup";
+            mail.Subject = "Test email for DNS lookup";
+            mailSender.Send(mail);
+            </code></example>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DnsMXMailSender.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DnsMXMailSender"/> class.
+            </summary>
+            <remarks>
+            The user's DNS domain is found from the USERDNSDOMAIN environment variable, 
+            and "soe-mx." is pre-pended to find the MX entries for the user's domain.
+            </remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DnsMXMailSender.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.DnsMXMailSender"/> class.
+            </summary>
+            <param name="domain">Name of the domain to query for MX records</param>
+            <remarks>The specified domain name is used to find MX entries.</remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DnsMXMailSender.Send(System.Web.Mail.MailMessage)">
+            <summary>
+            Send mailMessage using appropriate MX depending on location.
+            </summary>
+            <remarks>
+            Iterates through sorted list of MXRecordEntries until it
+            successfully sends a mail. Returns false if it fails to send mail
+            </remarks>
+            <param name="message"><see cref="T:System.Web.Mail.MailMessage"/> to send.</param>
+            <exception cref="T:System.ApplicationException">If none of the mail hosts could send the message.</exception>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DnsMXMailSender.Send(System.Net.Mail.MailMessage)">
+            <summary>
+            dotNet 2.0 compatible Send message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DnsMXMailSender.PrintMXEntries">
+            <summary>
+            Return string listing mail hosts for the user's domain.
+            </summary>
+            <returns>String listing mail hosts for the user's domain.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DnsMXMailSender.AddDefaultMailHosts(System.Collections.ArrayList)">
+            <summary>
+            Only need this in case all else fails. i.e if the MX
+            entries in DNS don't work. Preferences are put at high values so that 
+            they are only used as a last resort.
+            This logic is also implemented in EQTelnetMail in cpp and is 
+            implemented here for consistency. Hopefully should never resort
+            MX enries listed here. 
+            </summary>
+            <param name="hostList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DnsMXMailSender.GetMXRecords(System.String)">
+            <summary>
+            Return list of MX records by doing a DNS query for
+            the given domain. Returns list of MXRecordEntries sorted 
+            by preference.
+            </summary>
+            <param name="domain"></param>
+            <returns>List of MXRecordEntries for given domain</returns>
+        </member>
+        <member name="F:Citi.Eqtg.Core.DnsMXMailSender.ourLog">
+            <summary>
+            Class diagnostics instance
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DnsMXMailSender.MXRecordEntry">
+            <summary>
+            Simple class that represents a MX entry in DNS. 
+            We are only interested in MX name and preference. 
+            Implements IComarable to sort a list of MXRecordEntry objects
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.DummyProgressMeter">
+            <summary>
+            Progress meter with no output
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.IProgressMeter">
+            <summary>
+            Represents a status bar or other control that can display status messages.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.IProgressMeter.BeginOperation">
+            <summary>
+            Called to mark the beginning of an operation.
+            </summary>
+            <returns>An object that implements IProgressOperation.</returns>
+        </member>
+        <member name="P:Citi.Eqtg.Core.IProgressMeter.Text">
+            <summary>
+            Gets or sets the text displayed in the progress meter's status bar when no operation is running.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.DummyProgressMeter.BeginOperation">
+            <summary>
+            Called to mark the beginning of an operation.
+            </summary>
+            <returns>An object that implements IProgressOperation.</returns>
+        </member>
+        <member name="P:Citi.Eqtg.Core.DummyProgressMeter.Text">
+            <summary>
+            Gets or sets the text displayed in the progress meter's status bar when no operation is running.
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.ProgressOperationBase">
+            <summary>
+            Standard IProgressOperation implementation
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.IProgressOperation">
+            <summary>
+            Tracks the progress of a program's operation.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.IProgressOperation.Minimum">
+            <summary>
+            Gets or sets the minimum value of Current.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.IProgressOperation.Current">
+            <summary>
+            Gets or sets the operation's progress.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.IProgressOperation.Maximum">
+            <summary>
+            Gets or sets the maximum value of Current.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.IProgressOperation.Name">
+            <summary>
+            Gets or sets the operation's name.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ProgressOperationBase.#ctor">
+            <summary>
+            Constructs a ProgressOperationBase
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ProgressOperationBase.Dispose(System.Boolean)">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting 
+            unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ProgressOperationBase.Update">
+            <summary>
+            Called to update the status display
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.ProgressOperationBase.Minimum">
+            <summary>
+            Gets or sets the minimum value of Current.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.ProgressOperationBase.Current">
+            <summary>
+            Gets or sets the operation's progress.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.ProgressOperationBase.Maximum">
+            <summary>
+            Gets or sets the maximum value of Current.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.ProgressOperationBase.Name">
+            <summary>
+            Gets or sets the operation's name.
+            </summary>
+        </member>
+        <member name="E:Citi.Eqtg.Core.ProgressOperationBase.Disposed">
+            <summary>
+            Occurs when the operation finishes.
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.FormsAppHost">
+            <summary>
+            Implements a Windows Forms application.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.FormsAppHost.RunMainLoop">
+            <summary>
+            Called by <see cref="M:Citi.Eqtg.Core.App.Run"/> to run the application.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.FormsAppHost.ReportException(System.String,System.Exception)">
+            <summary>
+            Informs the user of an exception that occurred.
+            </summary>
+            <remarks>The <see cref="T:Citi.Eqtg.Core.FormsAppHost"/> override logs the exception
+            then displays a message box.</remarks>
+            <param name="message">The message to show to the user.</param>
+            <param name="ex">The <see cref="T:System.Exception"/> to report.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.FormsAppHost.Stop">
+            <summary>
+            Called by <see cref="M:Citi.Eqtg.Core.App.Stop"/> to request that the application exit.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.FormsAppHost.MainForm">
+            <summary>
+            Gets or sets the application's main <see cref="T:System.Windows.Forms.Form"/>.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.GenericCollectionUtils.FindDifferences``2(System.Collections.Generic.Dictionary{``0,``1},System.Collections.Generic.Dictionary{``0,``1})">
+            <summary>
+            Compare two Dictionary objects. return list of keys of differing entries
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="hash1"></param>
+            <param name="hash2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.GenericCollectionUtils.Intersection``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
+            <summary>
+            Find the common entries in two lists
+            </summary>
+            <typeparam name="K"></typeparam>
+            <param name="list1"></param>
+            <param name="list2"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Citi.Eqtg.Core.MetricSummary">
+             <summary>
+             Class to keep track of metrics.
+             Intended to be passed around so that multiple functional areas of code can contribute values.
+             The main key is 'metric' - this should give the meaning of the metric, and also the units for clarity (e.g. TotalQuerySeconds)
+             The secondary key is 'detail' - this should be used if a 'dynamic' set of results is required for a given metric (e.g. ModelCpuHours - one result per model)
+             
+             There is no need to pre-initialise the object - metrics are set up on the first call to the Add* functions.
+             
+             Examples:
+            
+             Metric only - to keep track of the number of database queries:  metricSummaryObject.AddTotalMetric(queryCount, additionalNumberOfQueries);
+             
+             Metric and detail - to keep track of the total CPU time per model: metricSummaryObject.AddTotalMetric(modelCpuHours, theModel, additionalTime);
+             
+             Thread-safe.
+             </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.AddMaxMetric(System.String,System.Double)">
+            <summary>
+            Keeps track of the highest value seen for this metric combination
+            </summary>
+            <param name="metric"></param>
+            <param name="metricValue"></param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.AddMaxMetric(System.String,System.String,System.Double)">
+            <summary>
+            Keeps track of the highest value seen for each (metric,detail) combination
+            </summary>
+            <param name="metric"></param>
+            <param name="detail"></param>
+            <param name="metricValue"></param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.AddMinMetric(System.String,System.Double)">
+            <summary>
+            Keeps track of the smallest value seen for each this metric
+            </summary>
+            <param name="metric"></param>
+            <param name="metricValue"></param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.AddMinMetric(System.String,System.String,System.Double)">
+            <summary>
+            Keeps track of the smallest value seen for each (metric,detail) combination
+            </summary>
+            <param name="metric"></param>
+            <param name="detail"></param>
+            <param name="metricValue"></param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.AddMeanMetric(System.String,System.Double)">
+            <summary>
+            Keeps track of the mean value seen for this metric
+            </summary>
+            <param name="metric"></param>
+            <param name="metricValue"></param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.AddMeanMetric(System.String,System.String,System.Double)">
+            <summary>
+            Keeps track of the mean value seen for each (metric,detail) combination
+            </summary>
+            <param name="metric"></param>
+            <param name="detail"></param>
+            <param name="metricValue"></param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.AddTotalMetric(System.String,System.Double)">
+            <summary>
+            Keeps a running total of values for each this metric
+            </summary>
+            <param name="metric"></param>
+            <param name="metricValue"></param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.AddTotalMetric(System.String,System.String,System.Double)">
+            <summary>
+            Keeps a running total of values for each (metric,detail) combination
+            </summary>
+            <param name="metric"></param>
+            <param name="detail"></param>
+            <param name="metricValue"></param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.AddExactMetric(System.String,System.Double)">
+            <summary>
+            Replaces the current value for this metric with metricValue
+            </summary>
+            <param name="metric"></param>
+            <param name="metricValue"></param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.AddExactMetric(System.String,System.String,System.Double)">
+            <summary>
+            Replaces the current value for (metric,detail) with metricValue
+            </summary>
+            <param name="metric"></param>
+            <param name="detail"></param>
+            <param name="metricValue"></param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.AddCountUniqueMetric(System.String,System.Int32)">
+            <summary>
+            Counts the number of unique values of countIfUnique for this metric
+            </summary>
+            <param name="metric"></param>
+            <param name="countIfUnique"></param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.AddCountUniqueMetric(System.String,System.String,System.Int32)">
+            <summary>
+            Counts the number of unique values of countIfUnique for this (metric,detail) combination
+            </summary>
+            <param name="metric"></param>
+            <param name="detail"></param>
+            <param name="countIfUnique"></param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.SnapshotSummary">
+            <summary>
+            Takes a snapshot of the current metrics.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.SnapshotSummary(System.String,System.String)">
+            <summary>
+            Takes a snapshot of the (metric,detail) metric
+            </summary>
+            <param name="metric"></param>
+            <param name="detail"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric">
+            <summary>
+            Class to represent the different metrics that can be tracked.
+            Feel free to add new one, but PLEASE DO NOT CHANGE EXISTING ONES!
+            Thanks.
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.rowsPerTable">
+            <summary>
+            Number of rows written to each table
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalQuerySeconds">
+            <summary>
+            Total amount of time spent in database queries
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.queryCount">
+            <summary>
+            Number of database queries executed
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.recordCount">
+            <summary>
+            Number of rows brought back from all database queries
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.dataLoadSeconds">
+            <summary>
+            Total amount of elapsed time during the general 'data loading phase' (AKA LoadUniverse)
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.phaseCpuHours">
+            <summary>
+            Number of cpu hours (i.e. grid time) broken down by 'phase' - i.e. marking, or a particular stress
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.phaseModelCalls">
+            <summary>
+            Number of model calls  broken down by 'phase' - i.e. marking, or a particular stress
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.modelCpuHours">
+            <summary>
+            Number of cpu hours (i.e. grid time) broken down by model type
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.resultsPerPhase">
+            <summary>
+            Number of results returned by phase - mostly one result = 1 database row, except in some cases, like breakdowns which have multiple rows per result
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.failedCentralCaseCount">
+            <summary>
+            Number of securities which failed during the pre-stressing central case phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.failedTasksReceivedCount">
+            <summary>
+            Number of failed tasks received from grid - regardless of what happened to them later
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.failedTaskCount">
+            <summary>
+            Number of failed tasks that resulted in lost data
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.emptyReturnTaskCount">
+            <summary>
+            Number of failed tasks with "Got a valid CalcNode reply without results"
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.failedTaskResendCount">
+            <summary>
+            Number of tasks that are send as a result of failed tasks
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.failedTaskLostResultRows">
+            <summary>
+            Estimated number of result rows in abandoned tasks
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.securitiesPerModel">
+            <summary>
+            Count of the number of unique securities per type of model
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.positionCount">
+            <summary>
+            Total number of distinct positions run over
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.resultPostProcessingGridSeconds">
+            <summary>
+            Total time (seconds) spent processing results in CalcNode after the model call
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.resultPostProcessingMaxGridSeconds">
+            <summary>
+            Longest time (seconds) in a single task spent processing results in CalcNode after the model call
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.resultPostProcessingClientSeconds">
+            <summary>
+            Total time (seconds) spent processing results recieved from CalcNode in the client
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.resultPostProcessingMaxClientSeconds">
+            <summary>
+            Longest time (seconds) spent processing results from a single task recieved from CalcNode in the client
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalDataSentMB">
+            <summary>
+            Total data sent to CalcNode in MB
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalDataReceivedMB">
+            <summary>
+            Total data recieved from CalcNode in MB
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.calcNodeCentralCasesTimeSeconds">
+            <summary>
+            Total time (seconds) calculating central cases prior to stressing
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.calcNodeStressingTimeSeconds">
+            <summary>
+            Total time (seconds) calculation the stresses
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.calcNodeCalcTimeSeconds">
+            <summary>
+            Total time spent performing model calls on CalcNode (should add up roughly to calcNodeCentralCasesTimeSeconds+calcNodeStressingTimeSeconds)
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.calcNodeRawSeconds">
+            <summary>
+            Raw total time on CalcNode - sum(task end time - task start time) for all tasks
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.calcNodeTotalNResultRows">
+            <summary>
+            Total number of result rows generated by CalcNode
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.calcNodeMaxNResultRows">
+            <summary>
+            Largest number of result rows in a single task
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.peakGridCoresUsed">
+            <summary>
+            Highest number of grid cores in use at any one time
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.peakGridCoresInUseSeconds">
+            <summary>
+            Total elapsed time that (peakGridCoresUsed) cores were used - this shows if it peaked at this, or if the grid was 'maxed out' for a period of time
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.longestTaskSeconds">
+            <summary>
+            Length of the longest task in seconds
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.taskCount">
+            <summary>
+            Total number of tasks sent
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.taskSendingSeconds">
+            <summary>
+            Total elapsed seconds spent in scheduling and sending tasks
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.synchronousSendingTotalSeconds">
+            <summary>
+            Total time (seconds) spent waiting purely for the synchronous task sending function to return
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.synchronousSendingLongestSeconds">
+            <summary>
+            Single longest time (seconds) spent waiting for the synchronous task sending function to return
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.memoryThrottleInvokes">
+            <summary>
+            Number of times the memory throttle was activated
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.memoryThrottleTotalSeconds">
+            <summary>
+            Length of time the memory throttle was activated
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.calcNodeVersion">
+            <summary>
+            Version of CalcNode used to execute first sucessful task to return from the grid
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.stressSchedulerVersion">
+            <summary>
+            Version of StressScheduler
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.peakCalcNodeMemoryMB">
+            <summary>
+            Peak memory used across all succesful tasks
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.averagePeakCalcNodeMemoryMB">
+            <summary>
+            Average memory used across all succesful tasks
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.calcNodePeakMBBucketed">
+            <summary>
+            Average memory used across all succesful tasks
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.peakCalcNodeMemoryDiffMB">
+            <summary>
+            Largest increase of calcnode memory post-deserialisaion of request, across sucessful tasks
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.averageCalcNodeMemoryDiffMB">
+            <summary>
+            Average increase of calcnode memory post-deserialisaion of request, across sucessful tasks
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.peakCalcNodeQlxHandles">
+            <summary>
+            Highest number of qlx handles used in a signle tasks, across succesful tasks
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.peakCalcNodeDpHandles">
+            <summary>
+            Highest number of dp handles used in a signle tasks, across succesful tasks
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.averagePeakCalcNodeQlxHandles">
+            <summary>
+            Average peak number of qlx handles used in a signle tasks, across succesful tasks
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.averagePeakCalcNodeDpHandles">
+            <summary>
+            Average peak number of dp handles used in a signle tasks, across succesful tasks
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.countOfDuplicateTaskIds">
+            <summary>
+            Number of duplicate task ids recieved from Symphony
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.countOfFailedSessions">
+            <summary>
+            Number of grid sessions failed
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientSeconds">
+            <summary>
+            Elapsed start-end time of the client
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSeconds">
+            <summary>
+            Elapsed start-end time of the client * average CPU utilisation
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.peakWorkingSetMB">
+            <summary>
+            Peak memory used, in MB
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.peakVirtualMB">
+            <summary>
+            Peak virtual memory used, in MB
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.maximumBackingStoreSizeMB">
+            <summary>
+            Greatest length of the on-disk file cache of returning tasks, awaiting post processing
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.preGridSeconds">
+            <summary>
+            Total elapsed time (seconds) prior to the first task being sent to the grid
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.onGridClientSeconds">
+            <summary>
+            Total elapsed time (seconds) between the first task send and last task reciept.
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.postGridSeconds">
+            <summary>
+            Total elapsed time (seconds) post the last task being received
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.contextServiceDependencyTreeCloneSeconds">
+            <summary>
+            Time building clone of context service dependency tree
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.clientPhaseTimeSeconds">
+            <summary>
+            Time by phase (internal calculations, marking, stressing, etc(?))
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.marketDataObjectCountBySourceAndType">
+            <summary>
+            market data objects loaded, grouped by source and type
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientLoadResponseFromDiskSeconds">
+            <summary>
+            Elapsed start-end time of the loading of persisted responses from disk
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientLoadResponseFromDiskCount">
+            <summary>
+            Elapsed start-end time of the loading of persisted responses from disk
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuPhaseCalculationSeconds">
+            <summary>
+            Elapsed start-end time of the whole phase calculation phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuCreateTrackerSeconds">
+            <summary>
+            Elapsed start-end time of the get securities phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuCreateParamsSeconds">
+            <summary>
+            Elapsed start-end time of the get securities phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuStoreResponsesSeconds">
+            <summary>
+            Elapsed start-end time of the get securities phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuMergeResponsesSeconds">
+            <summary>
+            Elapsed start-end time of the get securities phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuGetSecuritiesSeconds">
+            <summary>
+            Elapsed start-end time of the get securities phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSplitWorkSeconds">
+            <summary>
+            Elapsed start-end time of the work splitting phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuLoadResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuDetermineMerge">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuParseResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuStitchTables">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuStitchBeforeLoad">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuLoadResponseAndRanges">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuMergeOfOtherRanges">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuMergeOfPathMatrix">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuApplySort">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuAddCvaRequestSeconds">
+            <summary>
+            Elapsed start-end time of the add CVA request phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuBuildRequestSeconds">
+            <summary>
+            Elapsed start-end time of the build request phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuGetRequestDependenciesSeconds">
+            <summary>
+            Elapsed start-end time of the get request dependencies phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuBuildContextSeconds">
+            <summary>
+            Elapsed start-end time of the get request dependencies phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSendAndCalculateSeconds">
+            <summary>
+            Elapsed start-end time of the serialize phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializeSeconds">
+            <summary>
+            Elapsed start-end time of the serialize phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializeModelInputsSeconds">
+            <summary>
+            Elapsed start-end time of the serialize modelInputs phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializeContextsSeconds">
+            <summary>
+            Elapsed start-end time of the serialize Contexts phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializeStressWorkSetsSeconds">
+            <summary>
+            Elapsed start-end time of the serialize StressWorkSets phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializePositionsSeconds">
+            <summary>
+            Elapsed start-end time of the serialize Positions phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializeSplitStressParamsSeconds">
+            <summary>
+            Elapsed start-end time of the serialize SplitStressParams phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializeGlobalObjectsSeconds">
+            <summary>
+            Elapsed start-end time of the serialize Global Objects phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializeSecurityOverridesSeconds">
+            <summary>
+            Elapsed start-end time of the serialize Security Overrides phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializeGenericTablesSeconds">
+            <summary>
+            Elapsed start-end time of the serialize GenericTables phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializeCvaRequestSeconds">
+            <summary>
+            Elapsed start-end time of the serialize GenericTables phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializeCreateCalcRequestSeconds">
+            <summary>
+            Elapsed start-end time of the serialize CreateCalcRequest phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializeAddRangesSeconds">
+            <summary>
+            Elapsed start-end time of the serialize AddRanges phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializeCompressSeconds">
+            <summary>
+            Elapsed start-end time of the serialize Compress phase
+            </summary>
+        </member>
+        <member name="F:Citi.Eqtg.Core.MetricSummary.MetricSummaryMetric.totalClientCpuSerializeTrimExcessSeconds">
+            <summary>
+            Elapsed start-end time of the serialize TrimExcess phase
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.MetricSummary.MetricDetails.ToStringVerbose">
+            <summary>
+            Get a string of all the key/value pairs in the object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Citi.Eqtg.Core.MetricSummary.MetricSummaryResult">
+            <summary>
+            Simple class to store one metric summary result
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.ReflectedField">
+            <summary>
+            Wraps a field or a property.
+            </summary>
+            <remarks>
+            <p>The following scenarios are supported by <see cref="T:Citi.Eqtg.Core.ReflectedField"/>:</p>
+            <list type="bullet">
+            	<item>
+            		<description>Per-instance and static fields</description>
+            	</item>
+            	<item>
+            		<description>Per-instance and static properties with a setter</description>
+            	</item>
+            	<item>
+            		<description>
+            			Per-instance and static properties with no setter, but where the class has
+            			a method whose name is <c>Load</c> followed by the name of the property
+            		</description>
+            	</item>
+            </list>
+            <p>You should apply an attribute of type <paramref name="attributeType"/> to each field
+            or property if you want <see cref="M:Citi.Eqtg.Core.ReflectedField.Find(System.Type,System.Type)"/> to recognise them. If you have written a <c>Load</c>
+            method you should apply attributes to the property, not the <c>Load</c> method.</p>
+            <p>In addition to the <paramref name="attributeType"/> attribute, you can apply a
+            <see cref="T:System.ComponentModel.TypeConverterAttribute"/> to designate the <see cref="T:System.ComponentModel.TypeConverter"/>
+            used by the <see cref="M:Citi.Eqtg.Core.ReflectedField.SetStringValue(System.Object,System.String)"/> method to convert from <see cref="T:System.String"/>
+            to type <see cref="P:Citi.Eqtg.Core.ReflectedField.FieldType"/>.</p>
+            </remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ReflectedField.Find(System.Type,System.Type)">
+            <summary>
+            Creates an array of <see cref="T:Citi.Eqtg.Core.ReflectedField"/> objects that represent the fields
+            and properties of the given type marked with the given attribute.
+            </summary>
+            <remarks>
+            See the <see cref="T:Citi.Eqtg.Core.ReflectedField"/> class documentation for an explanation of how
+            this method searches for fields and properties.
+            </remarks>
+            <param name="instanceType">The <see cref="T:System.Type"/> to obtain fields and properties for.</param>
+            <param name="attributeType">The <see cref="T:System.Type"/> of <see cref="P:Citi.Eqtg.Core.ReflectedField.Attribute"/> used to mark
+            field and properties on <paramref name="type"/>.</param>
+            <returns>An array of <see cref="T:Citi.Eqtg.Core.ReflectedField"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ReflectedField.#ctor(System.Collections.ICollection,System.Type,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Citi.Eqtg.Core.ReflectedField"/> class.
+            </summary>
+            <param name="attributes">The attributes applied to the field.</param>
+            <param name="fieldType">The <see cref="T:System.Type"/> of the field.</param>
+            <param name="attributeType">The <see cref="T:System.Type"/> of attribute to return in the <see cref="P:Citi.Eqtg.Core.ReflectedField.Attribute"/> property.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ReflectedField.DoGetValue(System.Object)">
+            <summary>
+            TODO
+            </summary>
+            <param name="instance">TODO</param>
+            <returns>TODO</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ReflectedField.DoSetValue(System.Object,System.Object)">
+            <summary>
+            Sets the value of the field on the given object.
+            </summary>
+            <remarks>
+            <p>When the <see cref="T:Citi.Eqtg.Core.ReflectedField"/> accesses a field or property directly,
+            the <paramref name="value"/> should be directly convertible to the field or
+            property's type.</p>
+            <p>When the <see cref="T:Citi.Eqtg.Core.ReflectedField"/> accesses a property via a <c>Load</c> 
+            method, the <paramref name="value"/> should be directly convertible to the 
+            <c>Load</c> method's parameter.</p>
+            </remarks>
+            <param name="instance">An instance of the type passed to <see cref="M:Citi.Eqtg.Core.ReflectedField.Find(System.Type,System.Type)"/>.</param>
+            <param name="value">The value to assign to the field.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ReflectedField.GetValue(System.Object)">
+            <summary>
+            TOOD
+            </summary>
+            <param name="instance">TODO</param>
+            <returns>TODO</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ReflectedField.GetValue(System.Object,System.Type)">
+            <summary>
+            TOOD
+            </summary>
+            <param name="instance">TODO</param>
+            <param name="returnType">TODO</param>
+            <returns>TODO</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ReflectedField.SetValue(System.Object,System.Object)">
+            <summary>
+            Sets the value of the field on the given object.
+            </summary>
+            <remarks>
+            If the type of <paramref name="value"/> does not match the field or property's
+            type, it is first converted using the appropriate <see cref="T:System.ComponentModel.TypeConverter"/>.
+            </remarks>
+            <param name="instance">An instance of the type passed to <see cref="M:Citi.Eqtg.Core.ReflectedField.Find(System.Type,System.Type)"/>.</param>
+            <param name="value">The value to assign to the field.</param>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ReflectedField.GetStringValue(System.Object)">
+            <summary>
+            TODO
+            </summary>
+            <param name="instance">TODO</param>
+            <returns>TODO</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.ReflectedField.SetStringValue(System.Object,System.String)">
+            <summary>
+            Sets the value of the field on the given object from a string.
+            </summary>
+            <remarks>
+            The string is first converted to the target type using a <see cref="T:System.ComponentModel.TypeConverter"/>.
+            </remarks>
+            <param name="instance">An instance of the type passed to <see cref="M:Citi.Eqtg.Core.ReflectedField.Find(System.Type,System.Type)"/>.</param>
+            <param name="value">The value to assign to the field.</param>
+        </member>
+        <member name="P:Citi.Eqtg.Core.ReflectedField.Attribute">
+            <summary>
+            Gets the attribute assigned to the field or property.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.ReflectedField.FieldType">
+            <summary>
+            Gets the type of the field or property, or of the parameter of a property's <c>Load</c> method.
+            </summary>
+        </member>
+        <member name="P:Citi.Eqtg.Core.ReflectedField.Converter">
+            <summary>
+            Gets the <see cref="T:System.ComponentModel.TypeConverter"/> used by <see cref="M:Citi.Eqtg.Core.ReflectedField.GetValue(System.Object)"/> and <see cref="M:Citi.Eqtg.Core.ReflectedField.SetValue(System.Object,System.Object)"/>.
+            </summary>
+        </member>
+        <member name="T:Citi.Eqtg.Core.Rover8Converter">
+            <summary>
+            Provides a type converter to convert <see cref="T:System.DateTime"/> objects to and from a Rover 8 string.
+            </summary>
+            <remarks>
+            One place this class is used is by the PropertyGrid control, to convert <see cref="T:System.DateTime"/>
+            objects to and from <see cref="T:System.String"/>s.
+            </remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Rover8Converter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Returns whether this converter can convert an object of the given type to a <see cref="T:System.DateTime"/>, 
+            using the specified context.
+            </summary>
+            <remarks>
+            As implemented in this class, this method returns <see langword="true"/> only if <paramref name="sourceType"/>
+            equals <see cref="T:System.String"/>.
+            </remarks>
+            <param name="context">A <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that provides a format context.</param>
+            <param name="sourceType">A <see cref="T:System.Type"/> that represents the type you want to convert from.</param>
+            <returns><see langword="true"/> if this converter can perform the conversion; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Rover8Converter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Converts the given object to a <see cref="T:System.DateTime"/>, using the specified context and culture information.
+            </summary>
+            <param name="context">A <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that provides a format context.</param>
+            <param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> to use as the current culture.</param>
+            <param name="value">The <see cref="T:System.String"/> to convert.</param>
+            <returns>A <see cref="T:System.DateTime"/> that represents the converted value.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Rover8Converter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Returns whether this converter can convert the <see cref="T:System.DateTime"/> to the specified type,
+            using the specified context.
+            </summary>
+            <remarks>
+            As implemented in this class, this method returns <see langword="true"/> only if <paramref name="destinationType"/>
+            equals <see cref="T:System.String"/> or <see cref="T:System.ComponentModel.Design.Serialization.InstanceDescriptor"/>. <see cref="T:System.ComponentModel.Design.Serialization.InstanceDescriptor"/> is used
+            by the Windows Forms designer to generate code that calls <see cref="M:Citi.Eqtg.Core.DateUtils.Rover8ToDateTime(System.Int32)"/>.
+            </remarks>
+            <param name="context">A <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that provides a format context.</param>
+            <param name="destinationType">A <see cref="T:System.Type"/> that represents the type you want to convert to.</param>
+            <returns><see langword="true"/> if this converter can perform the conversion; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Citi.Eqtg.Core.Rover8Converter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            Converts the given <see cref="T:System.DateTime"/> to the specified type, using the specified context and culture information.
+            </summary>
+            <param name="context">A <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that provides a format context.</param>
+            <param name="culture">A <see cref="T:System.Globalization.CultureInfo"/> object. If <see langword="null"/> is passed,
+            the current culture is asumed.</param>
+            <param name="value">The <see cref="T:System.DateTime"/> to convert.</param>
+            <param name="destinationType">The <see cref="T:System.Type"/> to convert the <paramref name="value"/> 
+            parameter to.</param>
+            <returns>An <see cref="T:System.Object"/> that represents the converted value.</returns>
+        </member>
+        <member name="T:Citi.Eqtg.Core.WebAppHost">
+            <summary>
+            Implements <see cref="T:Citi.Eqtg.Core.AppHost"/> for a web application.
+            </summary>
+        </member>
+        <member name="M:Citi.Eqtg.Core.WebAppHost.RunMainLoop">
+            <summary>
+            Called by <see cref="M:Citi.Eqtg.Core.App.Run"/> to run the application.
+            </summary>
+            <remarks>
+            Calling <see cref="M:Citi.Eqtg.Core.App.Run"/> is not necessary for web applications, so
+            this method throws <see cref="T:System.NotSupportedException"/>.
+            </remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.WebAppHost.Stop">
+            <summary>
+            Called by <see cref="M:Citi.Eqtg.Core.App.Stop"/> to request that the application exit.
+            </summary>
+            <remarks>
+            Calling <see cref="M:Citi.Eqtg.Core.App.Stop"/> is not necessary for web applications, so
+            this method throws <see cref="T:System.NotSupportedException"/>.
+            </remarks>
+        </member>
+        <member name="M:Citi.Eqtg.Core.WebAppHost.ReadCommandLine">
+            <summary>
+            Called by <see cref="T:Citi.Eqtg.Core.CommandLine"/> to assemble the application's command command line
+            the first time it is needed.
+            </summary>
+            <returns>A <see cref="T:Citi.Eqtg.Core.CommandLine"/>.</returns>
+        </member>
+    </members>
+</doc>

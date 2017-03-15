@@ -1,0 +1,25 @@
+﻿<log4net>
+  <root>
+    <level value="INFO"/>
+    <appender-ref ref="FileAppender"/>
+    <appender-ref ref="ConsoleAppender" />
+  </root>
+
+  <appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender">
+		<layout type="log4net.Layout.PatternLayout">
+			<conversionPattern value="[%date] %message [%level]%newline" />
+		</layout>
+	</appender>
+  
+	<appender name="FileAppender" type="log4net.Appender.FileAppender">
+		<file type="log4net.Util.PatternString" value="%property{OutputDir}\PFSPLPublisher.%date{yyyyMMdd.HHmm}.log" />
+		<appendToFile value="false" />
+    <filter type="log4net.Filter.StringMatchFilter">
+      <stringToMatch value="Publishing [1] objects" />
+      <acceptOnMatch value="false" />
+    </filter>
+		<layout type="log4net.Layout.PatternLayout">
+			<conversionPattern value="[%date] %message [%level %thread %logger]%newline" />
+		</layout>
+	</appender>
+</log4net>
