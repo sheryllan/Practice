@@ -1,0 +1,6 @@
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\calculatorLexer.cs
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\calculatorParser.cs
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\calculatorListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\calculatorBaseListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\calculatorVisitor.cs
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\calculatorBaseVisitor.cs

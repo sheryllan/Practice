@@ -1,0 +1,14 @@
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\RecogniseFormulasLexer.cs
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\RecogniseFormulasParser.cs
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\RecogniseFormulasListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\RecogniseFormulasBaseListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\RecogniseFormulasVisitor.cs
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\RecogniseFormulasBaseVisitor.cs
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\AntlrEQrms.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\bin\Debug\AntlrEQrms.exe.config
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\bin\Debug\AntlrEQrms.exe
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\bin\Debug\AntlrEQrms.pdb
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\bin\Debug\Antlr4.Runtime.net45.dll
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\bin\Debug\Antlr4.Runtime.net45.xml
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\AntlrEQrms.exe
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\AntlrEQrms.pdb

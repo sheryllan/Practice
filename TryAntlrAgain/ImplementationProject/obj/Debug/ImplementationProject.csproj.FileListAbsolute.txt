@@ -1,0 +1,5 @@
+C:\PAA\ANTLR project\TryAntlrAgain\ImplementationProject\bin\Debug\ImplementationProject.exe.config
+C:\PAA\ANTLR project\TryAntlrAgain\ImplementationProject\bin\Debug\ImplementationProject.exe
+C:\PAA\ANTLR project\TryAntlrAgain\ImplementationProject\bin\Debug\ImplementationProject.pdb
+C:\PAA\ANTLR project\TryAntlrAgain\ImplementationProject\obj\Debug\ImplementationProject.exe
+C:\PAA\ANTLR project\TryAntlrAgain\ImplementationProject\obj\Debug\ImplementationProject.pdb

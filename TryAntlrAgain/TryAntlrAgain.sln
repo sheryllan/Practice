@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryAntlrAgain", "TryAntlrAgain\TryAntlrAgain.csproj", "{49746EE1-B72F-4D57-BD71-E4DC84288EFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetValuesFromColumn", "GetValuesFromColumn\GetValuesFromColumn.csproj", "{B58D9BCD-4CFB-49E4-9E64-5731EF97844A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetValuesFromColumn.Test", "NUnitTests\GetValuesFromColumn.Test.csproj", "{1B6D2C76-77BC-4C78-89DC-29F938684688}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49746EE1-B72F-4D57-BD71-E4DC84288EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49746EE1-B72F-4D57-BD71-E4DC84288EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49746EE1-B72F-4D57-BD71-E4DC84288EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49746EE1-B72F-4D57-BD71-E4DC84288EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B58D9BCD-4CFB-49E4-9E64-5731EF97844A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B58D9BCD-4CFB-49E4-9E64-5731EF97844A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B58D9BCD-4CFB-49E4-9E64-5731EF97844A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B58D9BCD-4CFB-49E4-9E64-5731EF97844A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B6D2C76-77BC-4C78-89DC-29F938684688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B6D2C76-77BC-4C78-89DC-29F938684688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B6D2C76-77BC-4C78-89DC-29F938684688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B6D2C76-77BC-4C78-89DC-29F938684688}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

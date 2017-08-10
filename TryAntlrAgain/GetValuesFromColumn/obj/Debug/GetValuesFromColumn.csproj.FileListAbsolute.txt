@@ -1,0 +1,23 @@
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\bin\Debug\GetValuesFromColumn.exe.config
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\bin\Debug\GetValuesFromColumn.exe
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\bin\Debug\GetValuesFromColumn.pdb
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\GetValuesFromColumn.exe
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\GetValuesFromColumn.pdb
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\bin\Debug\Antlr4.Runtime.net45.dll
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\bin\Debug\Antlr4.Runtime.net45.xml
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\calculatorLexer.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\calculatorParser.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\calculatorListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\calculatorBaseListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\calculatorVisitor.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\calculatorBaseVisitor.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\GetValuesFromColumn.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\GetValuesFromColumn.csprojResolveAssemblyReference.cache
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\bin\Debug\nunit.framework.dll
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\bin\Debug\nunit.framework.xml
+C:\Users\mh93685.EUR.000\Desktop\ANTLR project\TryAntlrAgain\GetValuesFromColumn\bin\Debug\GetValuesFromColumn.exe.config
+C:\Users\mh93685.EUR.000\Desktop\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\GetValuesFromColumn.exe
+C:\Users\mh93685.EUR.000\Desktop\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\GetValuesFromColumn.pdb
+N:\Stuffs\TryAntlrAgain\GetValuesFromColumn\bin\Debug\GetValuesFromColumn.exe.config
+N:\Stuffs\TryAntlrAgain\GetValuesFromColumn\obj\Debug\GetValuesFromColumn.exe
+N:\Stuffs\TryAntlrAgain\GetValuesFromColumn\obj\Debug\GetValuesFromColumn.pdb

@@ -1,0 +1,11 @@
+N:\Stuffs\High Residual Project\bin\Debug\ConsoleApplication.exe
+N:\Stuffs\High Residual Project\bin\Debug\ConsoleApplication.pdb
+N:\Stuffs\High Residual Project\obj\x86\Debug\ConsoleApplication.exe
+N:\Stuffs\High Residual Project\obj\x86\Debug\ConsoleApplication.pdb
+N:\Stuffs\High Residual Project\obj\x86\Debug\ResidualAnalysis.csproj.ResolveComReference.cache
+N:\Stuffs\High Residual Project\bin\Debug\PfsCommon.dll
+N:\Stuffs\High Residual Project\bin\Debug\PFSSwapGatewayInterfaces.dll
+N:\Stuffs\High Residual Project\bin\Debug\PfsCommon.pdb
+N:\Stuffs\High Residual Project\bin\Debug\PFSSwapGatewayInterfaces.pdb
+N:\Stuffs\High Residual Project\obj\x86\Debug\ResidualAnalysis.csprojResolveAssemblyReference.cache
+N:\Stuffs\High Residual Project\bin\Debug\ConsoleApplication.exe.config

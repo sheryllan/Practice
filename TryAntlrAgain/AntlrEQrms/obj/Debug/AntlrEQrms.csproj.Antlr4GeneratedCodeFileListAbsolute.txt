@@ -1,0 +1,6 @@
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\RecogniseFormulasLexer.cs
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\RecogniseFormulasParser.cs
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\RecogniseFormulasListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\RecogniseFormulasBaseListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\RecogniseFormulasVisitor.cs
+C:\PAA\ANTLR project\TryAntlrAgain\AntlrEQrms\obj\Debug\RecogniseFormulasBaseVisitor.cs

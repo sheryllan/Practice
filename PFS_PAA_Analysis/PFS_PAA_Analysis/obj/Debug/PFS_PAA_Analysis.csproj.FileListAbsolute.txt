@@ -25,3 +25,11 @@ N:\Stuffs\PFS_PAA_Analysis\PFS_PAA_Analysis\bin\Debug\Citi.Eqtg.Core.xml
 N:\Stuffs\PFS_PAA_Analysis\PFS_PAA_Analysis\bin\Debug\DocumentFormat.OpenXml.dll
 N:\Stuffs\PFS_PAA_Analysis\PFS_PAA_Analysis\bin\Debug\EPPlus.dll
 N:\Stuffs\PFS_PAA_Analysis\PFS_PAA_Analysis\bin\Debug\EPPlus.xml
+N:\MyGitHub.git\Practice\PFS_PAA_Analysis\PFS_PAA_Analysis\bin\Debug\PFS_PAA_Analysis.exe.config
+N:\MyGitHub.git\Practice\PFS_PAA_Analysis\PFS_PAA_Analysis\obj\Debug\PFS_PAA_Analysis.csproj.ResolveComReference.cache
+N:\MyGitHub.git\Practice\PFS_PAA_Analysis\PFS_PAA_Analysis\obj\Debug\PFS_PAA_Analysis.exe
+N:\MyGitHub.git\Practice\PFS_PAA_Analysis\PFS_PAA_Analysis\obj\Debug\PFS_PAA_Analysis.pdb
+N:\MyGitHub.git\Practice\PFS_PAA_Analysis\PFS_PAA_Analysis\obj\Debug\PFS_PAA_Analysis.csprojResolveAssemblyReference.cache
+N:\MyGitHub.git\Practice\PFS_PAA_Analysis\PFS_PAA_Analysis\obj\Debug\PFS_PAA_Analysis.Form1.resources
+N:\MyGitHub.git\Practice\PFS_PAA_Analysis\PFS_PAA_Analysis\obj\Debug\PFS_PAA_Analysis.Properties.Resources.resources
+N:\MyGitHub.git\Practice\PFS_PAA_Analysis\PFS_PAA_Analysis\obj\Debug\PFS_PAA_Analysis.csproj.GenerateResource.Cache

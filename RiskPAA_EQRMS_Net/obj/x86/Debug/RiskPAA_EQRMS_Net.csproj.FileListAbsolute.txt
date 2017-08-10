@@ -1,0 +1,10 @@
+C:\Users\sc93445\Documents\Visual Studio 2010\Projects\BcpAnalyzer\RiskPAA_EQRMS_Net\bin\Debug\RiskPAA_EQRMS_Net.exe
+C:\Users\sc93445\Documents\Visual Studio 2010\Projects\BcpAnalyzer\RiskPAA_EQRMS_Net\bin\Debug\RiskPAA_EQRMS_Net.pdb
+C:\Users\sc93445\Documents\Visual Studio 2010\Projects\BcpAnalyzer\RiskPAA_EQRMS_Net\obj\x86\Debug\RiskPAA_EQRMS_Net.exe
+C:\Users\sc93445\Documents\Visual Studio 2010\Projects\BcpAnalyzer\RiskPAA_EQRMS_Net\obj\x86\Debug\RiskPAA_EQRMS_Net.pdb
+N:\Stuffs\RiskPAA_EQRMS_Net\obj\x86\Debug\RiskPAA_EQRMS_Net.pdb
+N:\Stuffs\RiskPAA_EQRMS_Net\obj\x86\Debug\RiskPAA_EQRMS_Net.csprojResolveAssemblyReference.cache
+N:\Stuffs\RiskPAA_EQRMS_Net\bin\Debug\RiskPAA_EQRMS_Net.exe
+N:\Stuffs\RiskPAA_EQRMS_Net\bin\Debug\RiskPAA_EQRMS_Net.pdb
+N:\Stuffs\RiskPAA_EQRMS_Net\obj\x86\Debug\RiskPAA_EQRMS_Net.exe
+N:\Stuffs\RiskPAA_EQRMS_Net\obj\x86\Debug\RiskPAA_EQRMS_Net.csproj.ResolveComReference.cache

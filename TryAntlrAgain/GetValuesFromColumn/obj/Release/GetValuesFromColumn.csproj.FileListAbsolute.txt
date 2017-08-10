@@ -1,0 +1,8 @@
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Release\calculatorLexer.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Release\calculatorParser.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Release\calculatorListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Release\calculatorBaseListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Release\calculatorVisitor.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Release\calculatorBaseVisitor.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Release\GetValuesFromColumn.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\bin\Release\GetValuesFromColumn.exe.config

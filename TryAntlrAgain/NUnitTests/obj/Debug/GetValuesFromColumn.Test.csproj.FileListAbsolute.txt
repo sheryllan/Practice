@@ -1,0 +1,11 @@
+C:\PAA\ANTLR project\TryAntlrAgain\NUnitTests\bin\Debug\NUnitTests.dll
+C:\PAA\ANTLR project\TryAntlrAgain\NUnitTests\bin\Debug\NUnitTests.pdb
+C:\PAA\ANTLR project\TryAntlrAgain\NUnitTests\bin\Debug\GetValuesFromColumn.exe
+C:\PAA\ANTLR project\TryAntlrAgain\NUnitTests\bin\Debug\nunit.framework.dll
+C:\PAA\ANTLR project\TryAntlrAgain\NUnitTests\bin\Debug\Antlr4.Runtime.net45.dll
+C:\PAA\ANTLR project\TryAntlrAgain\NUnitTests\bin\Debug\GetValuesFromColumn.pdb
+C:\PAA\ANTLR project\TryAntlrAgain\NUnitTests\bin\Debug\nunit.framework.xml
+C:\PAA\ANTLR project\TryAntlrAgain\NUnitTests\bin\Debug\Antlr4.Runtime.net45.xml
+C:\PAA\ANTLR project\TryAntlrAgain\NUnitTests\obj\Debug\GetValuesFromColumn.Test.csprojResolveAssemblyReference.cache
+C:\PAA\ANTLR project\TryAntlrAgain\NUnitTests\obj\Debug\NUnitTests.dll
+C:\PAA\ANTLR project\TryAntlrAgain\NUnitTests\obj\Debug\NUnitTests.pdb

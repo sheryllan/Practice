@@ -1,0 +1,6 @@
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\calculatorLexer.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\calculatorParser.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\calculatorListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\calculatorBaseListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\calculatorVisitor.cs
+C:\PAA\ANTLR project\TryAntlrAgain\GetValuesFromColumn\obj\Debug\calculatorBaseVisitor.cs

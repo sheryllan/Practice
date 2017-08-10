@@ -1,0 +1,15 @@
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\bin\Debug\TryAntlrAgain.exe.config
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\TryAntlrAgain.csprojResolveAssemblyReference.cache
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\calculatorLexer.cs
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\calculatorParser.cs
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\calculatorListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\calculatorBaseListener.cs
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\calculatorVisitor.cs
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\calculatorBaseVisitor.cs
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\TryAntlrAgain.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\bin\Debug\TryAntlrAgain.exe
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\bin\Debug\TryAntlrAgain.pdb
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\bin\Debug\Antlr4.Runtime.net45.dll
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\bin\Debug\Antlr4.Runtime.net45.xml
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\TryAntlrAgain.exe
+C:\PAA\ANTLR project\TryAntlrAgain\TryAntlrAgain\obj\Debug\TryAntlrAgain.pdb
